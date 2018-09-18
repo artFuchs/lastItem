@@ -1,12 +1,22 @@
 extends KinematicBody2D
 
+enum ITEMS {
+	jump,
+	pusher
+}
+
+var items = [ITEMS.pusher, ITEMS.jump]
+var bullet = preload("res://objetos/bullet/bullet.tscn");
+var bulletSpeed = 200;
+
 export(float) var walk_speed = 300
 export(float) var grav_accel = 10
 export(float) var max_grav_vel = 300
 export(float) var jump_force = 300
+export var gravity = Vector2(0,1)
 
 var grav_vel = 0
-export var gravity = Vector2(0,1)
+var r = true
 
 func _physics_process(delta):
 	
@@ -25,13 +35,18 @@ func _physics_process(delta):
 	var target_speed = 0
 	if Input.is_action_pressed("right"):
 		target_speed = 1
+		r = true
 	elif Input.is_action_pressed("left"):
 		target_speed = -1
+		r = false
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		jump();
 	elif Input.is_action_just_released("jump") and !is_on_floor() and grav_vel<0:
 		grav_vel/=2;
+	
+	if Input.is_action_just_pressed("item"):
+		use_item()
 	
 	# add gravity and movement speed
 	linear_speed += gravity*grav_vel
@@ -42,3 +57,26 @@ func _physics_process(delta):
 	
 func jump():
 	grav_vel = -jump_force;
+	
+func use_item():
+	if items.empty():
+		return
+	
+	match items.pop_front():
+		ITEMS.jump:
+			jump()
+		ITEMS.pusher:
+			shot_pusher()
+		_:
+			pass
+	
+func shot_pusher():
+	var b = bullet.instance();
+	get_parent().add_child(b)
+	if r:
+		b.position = to_global($pos_r.position)
+		b.motion = gravity.rotated(3.141592*3/2)
+	else:
+		b.position = to_global($pos_l.position)
+		b.motion = gravity.rotated(3.141592*1/2)
+	b.motion*= bulletSpeed
