@@ -1,11 +1,7 @@
 extends KinematicBody2D
 
-enum ITEMS {
-	jump,
-	pusher
-}
-
-var items = [ITEMS.pusher, ITEMS.jump]
+const e = preload("res://scripts/enum.gd")
+var items = []
 var bullet = preload("res://objetos/bullet/bullet.tscn");
 var bulletSpeed = 200;
 
@@ -63,9 +59,9 @@ func use_item():
 		return
 	
 	match items.pop_front():
-		ITEMS.jump:
+		e.Items.JUMP:
 			jump()
-		ITEMS.pusher:
+		e.Items.PUSHER:
 			shot_pusher()
 		_:
 			pass
@@ -80,3 +76,8 @@ func shot_pusher():
 		b.position = to_global($pos_l.position)
 		b.motion = gravity.rotated(3.141592*1/2)
 	b.motion*= bulletSpeed
+	
+func collect(item):
+	if item >= e.Items.JUMP and item <= e.Items.PLATFORM:
+		items.append(item)
+	
