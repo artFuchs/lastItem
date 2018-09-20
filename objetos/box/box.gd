@@ -42,7 +42,6 @@ func _physics_process(delta):
 		var motion = move_and_slide(linear_speed, -gravity);
 		if motion == Vector2():
 			awakened = false
-			print("parou! motion:" + str(motion) + " grav_vel: " + str(grav_vel))
 	
 	if is_on_wall():
 		movement_speed = 0;
