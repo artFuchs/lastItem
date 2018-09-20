@@ -63,6 +63,15 @@ func use_item():
 			jump()
 		e.Items.PUSHER:
 			shot_pusher()
+		e.Items.GRAVITY_R:
+			gravity = gravity.rotated(3.141592*3/2)
+			self.rotate(3.141592*3/2)
+		e.Items.GRAVITY_L:
+			gravity = gravity.rotated(3.141592*1/2)
+			self.rotate(3.141592*1/2)
+		e.Items.GRAVITY_FLIP:
+			gravity = -gravity
+			self.rotate(3.141592)
 		_:
 			pass
 	

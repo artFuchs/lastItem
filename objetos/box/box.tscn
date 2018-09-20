@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objetos/box/box.gd" type="Script" id=1]
+[ext_resource path="res://sprites/square.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15, 15 )
+
+[node name="box" type="KinematicBody2D"]
+
+position = Vector2( 400.308, 315.253 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+grav_accel = 0.0
+max_grav_vel = 300.0
+fixed_speed = true
+wake_speed = 100.0
+movement_decrease_tax = 0
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0.195312, 0.137794, 0.0480652, 1 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+

@@ -5,6 +5,7 @@ enum Items {
 	PUSHER,
 	GRAVITY_R,
 	GRAVITY_L,
+	GRAVITY_FLIP,
 	CANNON,
 	PLATFORM
 }

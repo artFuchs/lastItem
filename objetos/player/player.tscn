@@ -3,12 +3,12 @@
 [ext_resource path="res://objetos/player/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/square.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15, 15 )
+points = PoolVector2Array( -15, -15, 15, -15, 15, 10, 0, 15, -15, 10 )
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 position = Vector2( 309.073, 324.254 )
 input_pickable = false
@@ -25,16 +25,34 @@ gravity = Vector2( 0, 1 )
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.126465, 0.155704, 0.875, 1 )
+position = Vector2( 0.394389, -0.472562 )
+scale = Vector2( 0.948751, 0.943489 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="eye_r" type="Sprite" parent="." index="1"]
+
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 7.49121, -7.19229 )
+scale = Vector2( 0.169595, 0.174865 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="eye_l" type="Sprite" parent="." index="2"]
+
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -7.49121, -7.19229 )
+scale = Vector2( 0.169595, 0.174865 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 0.397217, -0.397247 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
 
 anchor_mode = 1
 rotating = false
@@ -59,11 +77,11 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="pos_r" type="Position2D" parent="." index="3"]
+[node name="pos_r" type="Position2D" parent="." index="5"]
 
 position = Vector2( 28.0626, -7.10068 )
 
-[node name="pos_l" type="Position2D" parent="." index="4"]
+[node name="pos_l" type="Position2D" parent="." index="6"]
 
 position = Vector2( -30.497, -7.10068 )
 

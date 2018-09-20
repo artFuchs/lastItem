@@ -1,21 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tiles.res" type="TileSet" id=2]
-[ext_resource path="res://objetos/box/box.gd" type="Script" id=3]
-[ext_resource path="res://sprites/square.png" type="Texture" id=4]
-[ext_resource path="res://objetos/player/itens/item.tscn" type="PackedScene" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 15, 15 )
+[ext_resource path="res://objetos/box/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objetos/player/itens/item.tscn" type="PackedScene" id=4]
 
 [node name="scene" type="Node" index="0"]
 
 [node name="player" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 681.023, 341.255 )
+position = Vector2( 375.492, 302.295 )
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
@@ -36,49 +30,61 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -131079, 0, 0, -65543, 0, 0, -7, 0, 0, -65498, 0, 0, 65529, 0, 0, 38, 0, 0, 131065, 0, 0, 65574, 0, 0, 196601, 0, 0, 131110, 0, 0, 262137, 0, 0, 196646, 0, 0, 327673, 0, 0, 262182, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 327718, 0, 0, 458750, 0, 0, 393254, 0, 0, 524286, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458790, 0, 0, 589822, 0, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524326, 0, 0, 655358, 0, 0, 655359, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 589862, 0, 0, 720894, 0, 0, 655392, 0, 0, 786430, 0, 0, 786431, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720919, 0, 0, 720928, 0, 0, 786439, 0, 0, 786443, 0, 0, 786447, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786464, 0, 0, 851975, 0, 0, 851976, 0, 0, 851979, 0, 0, 851984, 0, 0, 851994, 0, 0, 851995, 0, 0, 851996, 0, 0, 851997, 0, 0, 851998, 0, 0, 851999, 0, 0, 852000, 0, 0, 917511, 0, 0, 917515, 0, 0, 917521, 0, 0, 917530, 0, 0, 983047, 0, 0, 983050, 0, 0, 983051, 0, 0, 983058, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 1048583, 0, 0, 1048587, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0 )
+tile_data = PoolIntArray( -720865, 0, 0, -720864, 0, 0, -720863, 0, 0, -720862, 0, 0, -720861, 0, 0, -720860, 0, 0, -720859, 0, 0, -720858, 0, 0, -720857, 0, 0, -720856, 0, 0, -720855, 0, 0, -720854, 0, 0, -720853, 0, 0, -720852, 0, 0, -655329, 0, 0, -655316, 0, 0, -589824, 0, 0, -589823, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589817, 0, 0, -589816, 0, 0, -589815, 0, 0, -589814, 0, 0, -589813, 0, 0, -589812, 0, 0, -589811, 0, 0, -589810, 0, 0, -589809, 0, 0, -589808, 0, 0, -589807, 0, 0, -589806, 0, 0, -589805, 0, 0, -589804, 0, 0, -589803, 0, 0, -589802, 0, 0, -589801, 0, 0, -589800, 0, 0, -589799, 0, 0, -589798, 0, 0, -589797, 0, 0, -589796, 0, 0, -589795, 0, 0, -589794, 0, 0, -589793, 0, 0, -589780, 0, 0, -524288, 0, 0, -524244, 0, 0, -458752, 0, 0, -458711, 0, 0, -458710, 0, 0, -458709, 0, 0, -458708, 0, 0, -393216, 0, 0, -393175, 0, 0, -327680, 0, 0, -327650, 0, 0, -327649, 0, 0, -327648, 0, 0, -327647, 0, 0, -327646, 0, 0, -327645, 0, 0, -327644, 0, 0, -327643, 0, 0, -327639, 0, 0, -262144, 0, 0, -262108, 0, 0, -262103, 0, 0, -196608, 0, 0, -196572, 0, 0, -196567, 0, 0, -131072, 0, 0, -131031, 0, 0, -65536, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65495, 0, 0, 0, 0, 0, 30, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 65536, 0, 0, 65566, 0, 0, 131072, 0, 0, 131102, 0, 0, 196608, 0, 0, 196638, 0, 0, 262144, 0, 0, 262174, 0, 0, 327680, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 393216, 0, 0, 393242, 0, 0, 458752, 0, 0, 458778, 0, 0, 524288, 0, 0, 524314, 0, 0, 589824, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 655360, 0, 0, 655380, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0 )
 _sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="box" type="KinematicBody2D" parent="." index="2"]
+[node name="box" parent="." index="2" instance=ExtResource( 3 )]
 
-editor/display_folded = true
-position = Vector2( 406.924, 310.107 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 3 )
-_sections_unfolded = [ "collision" ]
-grav_accel = 0.0
-max_grav_vel = 300.0
-fixed_speed = true
-wake_speed = 100.0
-movement_decrease_tax = 0
+position = Vector2( 1136.4, -66.9215 )
+grav_accel = 10.0
+fixed_speed = false
 
-[node name="Sprite" type="Sprite" parent="box" index="0"]
+[node name="box2" parent="." index="3" instance=ExtResource( 3 )]
 
-modulate = Color( 0.195312, 0.137794, 0.0480652, 1 )
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Visibility" ]
+position = Vector2( 944.708, -159.996 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="box" index="1"]
+[node name="collectabels" type="Node" parent="." index="4"]
 
-shape = SubResource( 1 )
+[node name="item" parent="collectabels" index="0" instance=ExtResource( 4 )]
 
-[node name="item" parent="." index="3" instance=ExtResource( 5 )]
+position = Vector2( 56.9576, 334.786 )
+item = 0
 
-position = Vector2( 849.75, 398.351 )
+[node name="item2" parent="collectabels" index="1" instance=ExtResource( 4 )]
 
-[node name="item2" parent="." index="4" instance=ExtResource( 5 )]
+position = Vector2( 91.7539, 333.079 )
+item = 0
 
-position = Vector2( 892.75, 395.351 )
+[node name="item3" parent="collectabels" index="2" instance=ExtResource( 4 )]
 
-[node name="item3" parent="." index="5" instance=ExtResource( 5 )]
+position = Vector2( 128.766, 331.228 )
+item = 0
 
-position = Vector2( 943.75, 393.351 )
+[node name="item4" parent="collectabels" index="3" instance=ExtResource( 4 )]
 
-[node name="item4" parent="." index="6" instance=ExtResource( 5 )]
+position = Vector2( 1052.07, -51.3524 )
+item = 1
 
-position = Vector2( 1001.75, 396.351 )
+[node name="item5" parent="collectabels" index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 1275.87, -56.363 )
+item = 2
+
+[node name="item6" parent="collectabels" index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 1382.77, -248.434 )
+item = 3
+
+[node name="item7" parent="collectabels" index="6" instance=ExtResource( 4 )]
+
+position = Vector2( 1382.18, -291.337 )
+item = 1
+
+[node name="item8" parent="collectabels" index="7" instance=ExtResource( 4 )]
+
+position = Vector2( 564.452, -188.29 )
 
 

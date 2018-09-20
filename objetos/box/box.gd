@@ -8,10 +8,15 @@ export(float) var wake_speed = 50
 var gravity = Vector2(0,1)
 var grav_vel = 0;
 
+var awakened = false
+
 var movement_speed = 0;
 export(int, 0, 100) var movement_decrease_tax = 1
 var movement_dir = Vector2();
 
+func _ready():
+	if grav_accel > 0:
+		awakened = true;
 
 func _physics_process(delta):
 	
@@ -33,7 +38,10 @@ func _physics_process(delta):
 		movement_speed = 0;
 	linear_speed += movement_dir*movement_speed;
 	
-	move_and_slide(linear_speed, -gravity);
+	if awakened:
+		var motion = move_and_slide(linear_speed, -gravity);
+		if motion == Vector2():
+			awakened = false
 	
 	if is_on_wall():
 		movement_speed = 0;
@@ -44,3 +52,4 @@ func move(direction, speed):
 		movement_speed = wake_speed
 	else:
 		movement_speed = speed
+	awakened = true;
