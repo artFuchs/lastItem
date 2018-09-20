@@ -14,6 +14,9 @@ export var gravity = Vector2(0,1)
 var grav_vel = 0
 var r = true
 
+signal killed
+
+
 func _physics_process(delta):
 	
 	var linear_speed = Vector2()
@@ -89,4 +92,10 @@ func shot_pusher():
 func collect(item):
 	if item >= e.Items.JUMP and item <= e.Items.PLATFORM:
 		items.append(item)
+
+func kill():
+	emit_signal("killed")
+	queue_free()
 	
+func _input_event(viewport, event, shape_idx):
+	kill()

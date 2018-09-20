@@ -14,7 +14,9 @@ func _ready():
 		e.Items.GRAVITY_R:
 			$label.set_text("rotate right");
 		e.Items.GRAVITY_L:
-			$label.set_text("rotate left");	
+			$label.set_text("rotate left");
+		e.Items.GRAVITY_FLIP:
+			$label.set_text("flip gravity");	
 		e.Items.CANNON:
 			$label.set_text("cannon");	
 		e.Items.PLATFORM:
