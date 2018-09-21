@@ -15,6 +15,7 @@ var grav_vel = 0
 var r = true
 
 signal killed
+signal changed_items
 
 
 func _physics_process(delta):
@@ -60,7 +61,7 @@ func jump():
 func use_item():
 	if items.empty():
 		return
-	
+		
 	match items.pop_front():
 		e.Items.JUMP:
 			jump()
@@ -77,6 +78,8 @@ func use_item():
 			self.rotate(3.141592)
 		_:
 			pass
+			
+	emit_signal("changed_items")
 	
 func shot_pusher():
 	var b = bullet.instance();
@@ -92,6 +95,7 @@ func shot_pusher():
 func collect(item):
 	if item >= e.Items.JUMP and item <= e.Items.PLATFORM:
 		items.append(item)
+	emit_signal("changed_items")
 
 func kill():
 	emit_signal("killed")

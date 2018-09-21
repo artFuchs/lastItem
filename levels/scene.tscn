@@ -70,6 +70,8 @@ position = Vector2( 564.452, -188.29 )
 
 [node name="obstacles" type="Node" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="spikes" parent="obstacles" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 800, -240 )

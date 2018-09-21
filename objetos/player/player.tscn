@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 points = PoolVector2Array( -15, -15, 15, -15, 15, 10, 0, 15, -15, 10 )
 
-[node name="player" type="KinematicBody2D" groups=[
+[node name="player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
 
