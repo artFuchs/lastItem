@@ -9,3 +9,4 @@ func _physics_process(delta):
 		print("collision")
 		if collider.has_method("kill"):
 			collider.kill()
+		$Line2D.points[1].y = $RayCast2D.get_collision_point().y - position.y

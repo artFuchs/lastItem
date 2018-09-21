@@ -26,50 +26,57 @@ fixed_speed = false
 
 position = Vector2( 944.708, -159.996 )
 
-[node name="collectabels" type="Node" parent="." index="3"]
+[node name="box3" parent="." index="3" instance=ExtResource( 3 )]
 
-editor/display_folded = true
+position = Vector2( 142.268, 299.277 )
+
+[node name="collectabels" type="Node" parent="." index="4"]
 
 [node name="item" parent="collectabels" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 533.241, 328.117 )
 item = 0
 
-[node name="item2" parent="collectabels" index="1" instance=ExtResource( 4 )]
+[node name="item9" parent="collectabels" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 256.417, 317.864 )
+item = 1
+
+[node name="item2" parent="collectabels" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 565.582, 327.638 )
 item = 0
 
-[node name="item3" parent="collectabels" index="2" instance=ExtResource( 4 )]
+[node name="item3" parent="collectabels" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 600.139, 327.014 )
 item = 0
 
-[node name="item4" parent="collectabels" index="3" instance=ExtResource( 4 )]
+[node name="item4" parent="collectabels" index="4" instance=ExtResource( 4 )]
 
 position = Vector2( 1052.07, -51.3524 )
 item = 1
 
-[node name="item5" parent="collectabels" index="4" instance=ExtResource( 4 )]
+[node name="item5" parent="collectabels" index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 1275.87, -56.363 )
 item = 2
 
-[node name="item6" parent="collectabels" index="5" instance=ExtResource( 4 )]
+[node name="item6" parent="collectabels" index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 1502.48, -236.191 )
 item = 3
 
-[node name="item7" parent="collectabels" index="6" instance=ExtResource( 4 )]
+[node name="item7" parent="collectabels" index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 1382.18, -291.337 )
 item = 1
 
-[node name="item8" parent="collectabels" index="7" instance=ExtResource( 4 )]
+[node name="item8" parent="collectabels" index="8" instance=ExtResource( 4 )]
 
 position = Vector2( 564.452, -188.29 )
 
-[node name="obstacles" type="Node" parent="." index="4"]
+[node name="obstacles" type="Node" parent="." index="5"]
 
 editor/display_folded = true
 
@@ -162,7 +169,7 @@ rotation = -3.14159
 
 position = Vector2( 52.3648, 349.472 )
 
-[node name="TileMap" type="TileMap" parent="." index="5"]
+[node name="TileMap" type="TileMap" parent="." index="6"]
 
 position = Vector2( 1.85071, 3.05176e-05 )
 mode = 0
