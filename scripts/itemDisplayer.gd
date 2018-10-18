@@ -3,14 +3,18 @@ extends HBoxContainer
 const e = preload("res://scripts/enum.gd");
 
 export(Texture) var default_tex = preload("res://sprites/square.png");
+export(Array) var itemTextures;
 
 func _ready():
 	updateItems([])
+	pass
 
 func itemTexture(var item):
 	var tex = default_tex
-	if !item:
+	if !item or (item > itemTextures.size()-1):
 		tex = null
+	else:
+		tex = itemTextures[item]
 	return tex;
 
 func updateItems(var items):

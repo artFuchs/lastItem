@@ -61,8 +61,6 @@ func jump():
 func use_item():
 	if items.empty():
 		return
-		
-	print (items)
 	
 	match items.pop_front():
 		e.Items.JUMP:
