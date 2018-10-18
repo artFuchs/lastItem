@@ -1,7 +1,7 @@
 extends Node
 
 enum Items {
-	JUMP,
+	JUMP = 1,
 	PUSHER,
 	GRAVITY_R,
 	GRAVITY_L,
