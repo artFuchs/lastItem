@@ -30,6 +30,11 @@ item=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","
  ]
 pause=[  ]
 
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="player"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

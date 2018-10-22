@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://objetos/box/box.gd" type="Script" id=1]
+[ext_resource path="res://objetos/box/box_gravity.gd" type="Script" id=1]
 [ext_resource path="res://sprites/square.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 15, 15 )
 
-[node name="box" type="KinematicBody2D" index="0"]
+[node name="box_gravity" type="KinematicBody2D"]
 
 position = Vector2( 19.7694, 17.6531 )
 input_pickable = false
@@ -20,7 +20,10 @@ _sections_unfolded = [ "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
-wake_speed = 100.0
+wake_speed = 50
+grav_accel = 10
+max_grav_vel = 300
+gravity = Vector2( 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

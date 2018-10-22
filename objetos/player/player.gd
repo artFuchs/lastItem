@@ -43,6 +43,8 @@ func process_normal(delta):
 		grav_vel = max_grav_vel
 	if is_on_floor():
 		grav_vel = grav_accel
+		
+	
 
 	# process input
 	var target_speed = 0
