@@ -1,0 +1,198 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://interface/UI.gd" type="Script" id=1]
+[ext_resource path="res://interface/HUD/itemDisplayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/PauseMenu.gd" type="Script" id=3]
+[ext_resource path="res://interface/UI_icons/play.png" type="Texture" id=4]
+[ext_resource path="res://interface/UI_icons/retry.png" type="Texture" id=5]
+
+[sub_resource type="InputEventKey" id=6]
+
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = true
+scancode = 16777217
+unicode = 0
+echo = false
+
+[sub_resource type="ShortCut" id=2]
+
+shortcut = SubResource( 6 )
+_sections_unfolded = [ "Resource" ]
+
+[node name="UI" type="CanvasLayer" index="0"]
+
+pause_mode = 2
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
+
+[node name="HUD" type="VBoxContainer" parent="MarginContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="itemDisplayer" parent="MarginContainer/HUD" index="0" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Margin", "Mouse", "Size Flags", "custom_constants" ]
+
+[node name="pause_button" type="Button" parent="MarginContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 978.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = SubResource( 2 )
+group = null
+text = "||"
+flat = false
+align = 1
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags" ]
+
+[node name="PauseMenu" type="PopupPanel" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 317.0
+margin_top = 110.0
+margin_right = 707.0
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+script = ExtResource( 3 )
+_sections_unfolded = [ "Anchor", "Popup", "Rect", "Size Flags" ]
+pauseButtonPath = NodePath("../MarginContainer/pause_button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -170.0
+margin_top = -75.0
+margin_right = 169.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="button_resume" type="Button" parent="PauseMenu/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 339.0
+margin_bottom = 73.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Resume"
+icon = ExtResource( 4 )
+flat = false
+align = 1
+_sections_unfolded = [ "Size Flags", "Textures" ]
+
+[node name="button_retry" type="Button" parent="PauseMenu/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 77.0
+margin_right = 339.0
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Retry"
+icon = ExtResource( 5 )
+flat = false
+align = 1
+_sections_unfolded = [ "Size Flags" ]
+
+

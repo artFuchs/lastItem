@@ -1,5 +1,12 @@
 extends KinematicBody2D
 
+enum States{
+	NORMAL,
+	CANNON,
+	STOPED
+}
+var state = States.NORMAL
+
 const e = preload("res://scripts/enum.gd")
 var items = []
 var bullet = preload("res://objetos/bullet/bullet.tscn");
@@ -20,8 +27,14 @@ signal changed_items(items)
 
 func _physics_process(delta):
 	
+	match state:
+		States.NORMAL:
+			process_normal(delta)
+		
+		
+
+func process_normal(delta):
 	var linear_speed = Vector2()
-	
 	# update gravity
 	if is_on_ceiling():
 		grav_vel = grav_accel
@@ -54,7 +67,12 @@ func _physics_process(delta):
 	linear_speed += gravity.rotated(3.141592*3/2)*target_speed
 	
 	move_and_slide(linear_speed, -gravity)
+
+func process_cannon(delta):
+	pass
 	
+
+
 func jump():
 	grav_vel = -jump_force;
 	
