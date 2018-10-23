@@ -11,3 +11,6 @@ func pause():
 	
 func resume():
 	get_tree().paused = false;
+
+func _on_flag_level_end():
+	$UI.show_win_message()

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objetos/flag/flag.gd" type="Script" id=1]
+[ext_resource path="res://sprites/triangle.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 27.301, 16.5608 )
+
+[node name="flag" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+self_modulate = Color( 0.238782, 0.949219, 0.114944, 1 )
+position = Vector2( 3.1359, 0.297337 )
+rotation = 1.57079
+scale = Vector2( 0.696626, 1.12892 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+

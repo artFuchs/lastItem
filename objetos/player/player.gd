@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 enum States{
 	NORMAL,
-	CANNON,
+	PLATFORM,
 	STOPED
 }
 var state = States.NORMAL
@@ -19,18 +19,44 @@ export(float) var jump_force = 300
 export var gravity = Vector2(0,1)
 
 var grav_vel = 0
-var r = true
+var r = true # true se o player está virado para direita
+
+export (Texture) var PlatformTex;
+export (PackedScene) var platform
+var platform_collisions = [false,false,false,false]
 
 signal killed
 signal changed_items(items)
-
 
 func _physics_process(delta):
 	
 	match state:
 		States.NORMAL:
 			process_normal(delta)
-		
+		States.PLATFORM:
+			process_platform(delta)
+			
+func _draw():
+	
+	match state:
+		States.NORMAL:
+			pass
+		States.PLATFORM:
+			var w = PlatformTex.get_width()
+			var h = PlatformTex.get_height()
+			var white = Color(1,1,1,0.5)
+			var red = Color(1,0,0,0.5)
+			var colors = [white, white, white, white]
+			for i in range(0,platform_collisions.size()):
+				if platform_collisions[i]:
+					colors[i] = red
+				else:
+					colors[i] = white
+				
+			draw_texture(PlatformTex, Vector2(0.5*w,-0.5*h), colors[0])
+			draw_texture(PlatformTex, Vector2(-1.5*w,-0.5*h), colors[1])
+			draw_texture(PlatformTex, Vector2(-0.5*w,-1.5*h), colors[2])
+			draw_texture(PlatformTex, Vector2(-0.5*w,0.5*h), colors[3])
 		
 
 func process_normal(delta):
@@ -44,9 +70,8 @@ func process_normal(delta):
 	if is_on_floor():
 		grav_vel = grav_accel
 		
-	
-
-	# process input
+	# processar entrada
+	# movimento
 	var target_speed = 0
 	if Input.is_action_pressed("right"):
 		target_speed = 1
@@ -60,21 +85,58 @@ func process_normal(delta):
 	elif Input.is_action_just_released("jump") and !is_on_floor() and grav_vel<0:
 		grav_vel/=2;
 	
+	# ação
 	if Input.is_action_just_pressed("item"):
 		use_item()
 	
-	# add gravity and movement speed
+	# adicionar gravidade e velocidade de movimento
 	linear_speed += gravity*grav_vel
 	target_speed *= walk_speed
 	linear_speed += gravity.rotated(3.141592*3/2)*target_speed
 	
+	# mover
 	move_and_slide(linear_speed, -gravity)
 
 func process_cannon(delta):
+	if Input.is_action_just_pressed("item"):
+		state = States.NORMAL
 	pass
 	
-
-
+func process_platform(delta):
+	var w = PlatformTex.get_width()
+	var h = PlatformTex.get_height()
+	platform_collisions[0] = test_move(transform, Vector2(w, 0)) # right
+	platform_collisions[1] = test_move(transform, Vector2(-w, 0)) # left
+	platform_collisions[2] = test_move(transform, Vector2(0, -h)) # up
+	platform_collisions[3] = test_move(transform, Vector2(0, h)) # down
+	update()
+	
+	if Input.is_action_just_pressed("item"): #cancel
+		state = States.NORMAL
+		items.push_front(e.Items.PLATFORM)
+		emit_signal("changed_items", items)
+		update()
+	
+	if Input.is_action_just_pressed("right"):
+		create_platform(Vector2(w, 0))
+		state = States.NORMAL
+		update()
+		
+	if Input.is_action_just_pressed("left"):
+		create_platform(Vector2(-w, 0))
+		state = States.NORMAL
+		update()
+	
+	if Input.is_action_just_pressed("jump"):
+		create_platform(Vector2(0, -h))
+		state = States.NORMAL
+		update()
+	
+	if Input.is_action_just_pressed("down"):
+		create_platform(Vector2(0, h))
+		state = States.NORMAL
+		update()
+	
 func jump():
 	grav_vel = -jump_force;
 	
@@ -96,6 +158,9 @@ func use_item():
 		e.Items.GRAVITY_FLIP:
 			gravity = -gravity
 			self.rotate(3.141592)
+		e.Items.PLATFORM:
+			state = States.PLATFORM
+			update()
 		_:
 			pass
 			
@@ -111,6 +176,13 @@ func shot_pusher():
 		b.position = to_global($pos_l.position)
 		b.motion = gravity.rotated(3.141592*1/2)
 	b.motion*= bulletSpeed
+	
+func create_platform(pos):
+	if !platform:
+		return
+	var p = platform.instance()
+	get_parent().add_child(p)
+	p.position = to_global(pos)
 	
 func collect(item):
 	if item >= e.Items.JUMP and item <= e.Items.PLATFORM:

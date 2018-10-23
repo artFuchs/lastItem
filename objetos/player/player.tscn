@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objetos/player/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/square.png" type="Texture" id=2]
+[ext_resource path="res://objetos/box/box.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -15, -15, 15, -15, 15, 10, 10, 15, -10, 15, -15, 10 )
 
-[node name="player" type="KinematicBody2D" index="0" groups=[
+[node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
 
@@ -24,6 +25,8 @@ grav_accel = 10
 max_grav_vel = 300
 jump_force = 300
 gravity = Vector2( 0, 1 )
+PlatformTex = ExtResource( 2 )
+platform = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

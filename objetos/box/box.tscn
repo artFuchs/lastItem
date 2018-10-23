@@ -8,18 +8,15 @@
 custom_solver_bias = 0.0
 extents = Vector2( 15, 15 )
 
-[node name="box" type="KinematicBody2D" index="0"]
+[node name="box" type="KinematicBody2D"]
 
 position = Vector2( 19.7694, 17.6531 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 3
+collision_mask = 3
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
+_sections_unfolded = [ "Collision", "collision" ]
 wake_speed = 100.0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
