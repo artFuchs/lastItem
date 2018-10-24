@@ -9,17 +9,17 @@
 custom_solver_bias = 0.0
 points = PoolVector2Array( -15, -15, 15, -15, 15, 10, 10, 15, -10, 15, -15, 10 )
 
-[node name="player" type="KinematicBody2D" index="0" groups=[
+[node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
 
 position = Vector2( 309.073, 324.254 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pickable" ]
+_sections_unfolded = [ "Collision", "Pickable" ]
 walk_speed = 150.0
 grav_accel = 10
 max_grav_vel = 300

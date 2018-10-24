@@ -1,41 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://objetos/spikes/spikes.gd" type="Script" id=1]
-[ext_resource path="res://sprites/triangle.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
-
-custom_solver_bias = 0.0
-points = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( 0, -10, 7, 6, -7, 6 )
+extents = Vector2( 30.0413, 30.0413 )
 
-[node name="spikes" type="StaticBody2D" index="0"]
-
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
-
-[node name="Sprite" type="Sprite" parent="." index="0"]
-
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="spike" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -46,12 +18,12 @@ collision_layer = 3
 collision_mask = 3
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Collision", "Transform" ]
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -0.0800991, -8.67417 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 
