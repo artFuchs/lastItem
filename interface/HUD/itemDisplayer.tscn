@@ -7,7 +7,7 @@
 [ext_resource path="res://interface/HUD/itemIcons/rotate_left.png" type="Texture" id=5]
 [ext_resource path="res://interface/HUD/itemIcons/rotate_right.png" type="Texture" id=6]
 [ext_resource path="res://interface/HUD/itemIcons/flip.png" type="Texture" id=7]
-[ext_resource path="res://interface/HUD/itemIcons/cannon.png" type="Texture" id=8]
+[ext_resource path="res://interface/HUD/itemIcons/lunette.png" type="Texture" id=8]
 [ext_resource path="res://interface/HUD/itemIcons/platform.png" type="Texture" id=9]
 [ext_resource path="res://interface/HUD/itemIcons/selected.png" type="Texture" id=10]
 

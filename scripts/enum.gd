@@ -6,6 +6,6 @@ enum Items {
 	GRAVITY_R,
 	GRAVITY_L,
 	GRAVITY_FLIP,
-	CANNON,
+	LUNETTE,
 	PLATFORM
 }

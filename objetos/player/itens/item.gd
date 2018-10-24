@@ -21,8 +21,8 @@ func set_item(new_value):
 			label.set_text("rotate left")
 		e.Items.GRAVITY_FLIP:
 			label.set_text("flip gravity")
-		e.Items.CANNON:
-			label.set_text("cannon")
+		e.Items.LUNETTE:
+			label.set_text("lunette")
 		e.Items.PLATFORM:
 			label.set_text("platform")
 

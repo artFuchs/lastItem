@@ -3,7 +3,8 @@ extends KinematicBody2D
 enum States{
 	NORMAL,
 	PLATFORM,
-	STOPED
+	LUNETTE,
+	STOPED,
 }
 var state = States.NORMAL
 
@@ -35,9 +36,10 @@ func _physics_process(delta):
 			process_normal(delta)
 		States.PLATFORM:
 			process_platform(delta)
+		States.LUNETTE:
+			process_lunette(delta)
 			
 func _draw():
-	
 	match state:
 		States.NORMAL:
 			pass
@@ -97,10 +99,22 @@ func process_normal(delta):
 	# mover
 	move_and_slide(linear_speed, -gravity)
 
-func process_cannon(delta):
+func process_lunette(delta):
+	var d = 16;
+	
+	if Input.is_action_pressed("right"):
+		$Camera2D.position.x += d
+	elif Input.is_action_pressed("left"):
+		$Camera2D.position.x -= d
+		
+	if Input.is_action_pressed("jump"):
+		$Camera2D.position.y -= d
+	elif Input.is_action_pressed("down"):
+		$Camera2D.position.y += d
+	
 	if Input.is_action_just_pressed("item"):
+		$Camera2D.transform = Transform()	
 		state = States.NORMAL
-	pass
 	
 func process_platform(delta):
 	var w = PlatformTex.get_width()
@@ -158,6 +172,8 @@ func use_item():
 		e.Items.GRAVITY_FLIP:
 			gravity = -gravity
 			self.rotate(3.141592)
+		e.Items.LUNETTE:
+			state = States.LUNETTE
 		e.Items.PLATFORM:
 			state = States.PLATFORM
 			update()

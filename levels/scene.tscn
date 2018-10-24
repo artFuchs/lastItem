@@ -25,7 +25,6 @@ _sections_unfolded = [ "Collision", "Pause", "Pickable" ]
 
 [node name="collectabels" type="Node" parent="." index="1"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="item9" parent="collectabels" index="0" instance=ExtResource( 3 )]
@@ -75,7 +74,7 @@ item = 2
 [node name="item8" parent="collectabels" index="9" instance=ExtResource( 3 )]
 
 position = Vector2( -32.455, -227.481 )
-item = 5
+item = 6
 
 [node name="obstacles" type="Node" parent="." index="2"]
 

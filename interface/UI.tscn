@@ -1,28 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://interface/UI.gd" type="Script" id=1]
 [ext_resource path="res://interface/HUD/itemDisplayer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://interface/PauseMenu.gd" type="Script" id=3]
-[ext_resource path="res://interface/UI_icons/play.png" type="Texture" id=4]
-[ext_resource path="res://interface/UI_icons/retry.png" type="Texture" id=5]
-
-[sub_resource type="InputEventKey" id=1]
-
-device = 0
-alt = false
-shift = false
-control = false
-meta = false
-command = false
-pressed = true
-scancode = 16777217
-unicode = 0
-echo = false
-
-[sub_resource type="ShortCut" id=2]
-
-shortcut = SubResource( 1 )
-_sections_unfolded = [ "Resource" ]
+[ext_resource path="res://interface/pause_shortcut.tres" type="ShortCut" id=3]
+[ext_resource path="res://interface/PauseMenu.gd" type="Script" id=4]
+[ext_resource path="res://interface/UI_icons/play.png" type="Texture" id=5]
+[ext_resource path="res://interface/UI_icons/retry.png" type="Texture" id=6]
 
 [node name="UI" type="CanvasLayer" index="0"]
 
@@ -37,7 +20,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -88,23 +70,47 @@ margin_right = 1004.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 toggle_mode = false
-enabled_focus_mode = 2
-shortcut = SubResource( 2 )
+enabled_focus_mode = 0
+shortcut = ExtResource( 3 )
 group = null
 text = "||"
 flat = false
 align = 1
-_sections_unfolded = [ "Anchor", "Margin", "Size Flags" ]
+_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Size Flags" ]
+
+[node name="LabelWin" type="Label" parent="MarginContainer" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 293.0
+margin_right = 1004.0
+margin_bottom = 307.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 1, 0, 0.351562, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "YOU WIN!"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="PauseMenu" type="PopupPanel" parent="." index="1"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -121,7 +127,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Anchor", "Popup", "Rect", "Size Flags" ]
 pauseButtonPath = NodePath("../MarginContainer/pause_button")
 
@@ -159,7 +165,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = false
@@ -167,10 +173,10 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Resume"
-icon = ExtResource( 4 )
+icon = ExtResource( 5 )
 flat = false
 align = 1
-_sections_unfolded = [ "Size Flags", "Textures" ]
+_sections_unfolded = [ "Mouse", "Textures" ]
 
 [node name="button_retry" type="Button" parent="PauseMenu/VBoxContainer" index="1"]
 
@@ -185,7 +191,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = false
@@ -193,48 +199,8 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Retry"
-icon = ExtResource( 5 )
+icon = ExtResource( 6 )
 flat = false
 align = 1
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="CenterContainer" type="CenterContainer" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-use_top_left = false
-
-[node name="Label" type="Label" parent="CenterContainer" index="0"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 480.0
-margin_top = 293.0
-margin_right = 544.0
-margin_bottom = 307.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_colors/font_color = Color( 1, 0, 0.351562, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "YOU WIN!"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors" ]
 
 
