@@ -7,7 +7,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -15, -15, 15, -15, 15, 10, 10, 15, -10, 15, -15, 10 )
+points = PoolVector2Array( -14, -14, 14, -14, 14, 10, 10, 14, -10, 14, -14, 10 )
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
@@ -31,15 +31,14 @@ platform = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.126465, 0.155704, 0.875, 1 )
-position = Vector2( 0.394389, -0.472562 )
-scale = Vector2( 0.948751, 0.943489 )
+scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="eye_r" type="Sprite" parent="." index="1"]
 
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 7.49121, -7.19229 )
+position = Vector2( 7.27142, -7.15247 )
 scale = Vector2( 0.169595, 0.174865 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
@@ -47,14 +46,13 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 [node name="eye_l" type="Sprite" parent="." index="2"]
 
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -7.49121, -7.19229 )
+position = Vector2( -6.42493, -6.97763 )
 scale = Vector2( 0.169595, 0.174865 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0.397217, -0.397247 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

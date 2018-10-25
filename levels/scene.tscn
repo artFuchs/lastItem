@@ -11,7 +11,7 @@
 [ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=10]
 
-[node name="scene" type="Node" index="0"]
+[node name="scene" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -43,32 +43,31 @@ __meta__ = {
 
 [node name="collectabels" type="Node" parent="." index="1"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="item9" parent="collectabels" index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 135.417, 330.864 )
+position = Vector2( 144, 336 )
 item = 7
 
 [node name="item10" parent="collectabels" index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 94.417, 329.864 )
+position = Vector2( 96, 336 )
 item = 2
 
 [node name="item" parent="collectabels" index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 291.276, 317.864 )
+position = Vector2( 288, 336 )
 item = 1
 
 [node name="item2" parent="collectabels" index="3" instance=ExtResource( 3 )]
 
-position = Vector2( 323.617, 317.385 )
+position = Vector2( 336, 336 )
 item = 1
 
 [node name="item3" parent="collectabels" index="4" instance=ExtResource( 3 )]
 
-position = Vector2( 358.174, 316.761 )
+position = Vector2( 384, 336 )
 item = 1
 
 [node name="item4" parent="collectabels" index="5" instance=ExtResource( 3 )]
@@ -97,7 +96,6 @@ item = 5
 
 [node name="obstacles" type="Node" parent="." index="2"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="spikes" parent="obstacles" index="0" instance=ExtResource( 4 )]
@@ -113,11 +111,11 @@ scale = Vector2( 0.764022, 0.490613 )
 
 [node name="laser" parent="obstacles" index="2" instance=ExtResource( 5 )]
 
-position = Vector2( 52.3648, 349.472 )
+position = Vector2( 48, 352 )
 
 [node name="laser2" parent="obstacles" index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 622.844, 347.491 )
+position = Vector2( 624, 352 )
 
 [node name="box" parent="obstacles" index="4" instance=ExtResource( 6 )]
 

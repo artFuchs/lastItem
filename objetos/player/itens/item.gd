@@ -7,24 +7,23 @@ export (e.Items) var item = e.Items.JUMP setget set_item
 
 func set_item(new_value):
 	item = new_value
-	var label = get_node("label");
-	if !label:
+	if !has_node("label"):
 		return
 	match new_value:
 		e.Items.JUMP:
-			label.set_text("jump")
+			$label.set_text("jump")
 		e.Items.PUSHER:
-			label.set_text("pusher")
+			$label.set_text("pusher")
 		e.Items.GRAVITY_R:
-			label.set_text("rotate right")
+			$label.set_text("rotate right")
 		e.Items.GRAVITY_L:
-			label.set_text("rotate left")
+			$label.set_text("rotate left")
 		e.Items.GRAVITY_FLIP:
-			label.set_text("flip gravity")
+			$label.set_text("flip gravity")
 		e.Items.LUNETTE:
-			label.set_text("lunette")
+			$label.set_text("lunette")
 		e.Items.PLATFORM:
-			label.set_text("platform")
+			$label.set_text("platform")
 
 func _ready():
 	connect("body_entered", self, "_on_item_body_entered")
