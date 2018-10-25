@@ -119,12 +119,8 @@ func process_lunette(delta):
 func process_platform(delta):
 	var w = PlatformTex.get_width()
 	var h = PlatformTex.get_height()
-#	platform_collisions[0] = test_move(transform, Vector2(w, 0)) # right
-#	platform_collisions[1] = test_move(transform, Vector2(-w, 0)) # left
-#	platform_collisions[2] = test_move(transform, Vector2(0, -h)) # up
-#	platform_collisions[3] = test_move(transform, Vector2(0, h)) # down
-	platform_collisions[0] = test_move(transform, w*gravity.rotated(3.1415*0.5)) # right
-	platform_collisions[1] = test_move(transform, w*gravity.rotated(3.1415*1.5)) # left
+	platform_collisions[0] = test_move(transform, w*gravity.rotated(3.1415*1.5)) # right
+	platform_collisions[1] = test_move(transform, w*gravity.rotated(3.1415*0.5)) # left
 	platform_collisions[2] = test_move(transform, h*gravity.rotated(-3.1415)) # up
 	platform_collisions[3] = test_move(transform, h*gravity) # down
 	update()

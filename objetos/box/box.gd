@@ -27,6 +27,5 @@ func _physics_process(delta):
 
 func move(direction, speed):
 	movement_dir = direction;
-	#movement_dir = Vector2(0,-1)
 	movement_speed = wake_speed
 	awakened = true;
