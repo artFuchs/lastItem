@@ -131,22 +131,22 @@ func process_platform(delta):
 		emit_signal("changed_items", items)
 		update()
 	
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_just_pressed("right") and !platform_collisions[0]:
 		create_platform(Vector2(w, 0))
 		state = States.NORMAL
 		update()
 		
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("left") and !platform_collisions[1]:
 		create_platform(Vector2(-w, 0))
 		state = States.NORMAL
 		update()
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and !platform_collisions[2]:
 		create_platform(Vector2(0, -h))
 		state = States.NORMAL
 		update()
 	
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("down") and !platform_collisions[3]:
 		create_platform(Vector2(0, h))
 		state = States.NORMAL
 		update()
