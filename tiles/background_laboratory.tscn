@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tiles/tileset_background.png" type="Texture" id=1]
+
+[node name="background_laboratory" type="Node"]
+
+[node name="0 - wall" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="1 - door_up" type="Sprite" parent="." index="1"]
+
+position = Vector2( 80, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="2 - door_down" type="Sprite" parent="." index="2"]
+
+position = Vector2( 80, 80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="3 - door_up_wrecked" type="Sprite" parent="." index="3"]
+
+position = Vector2( 240, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="4 - door_down_wrecked" type="Sprite" parent="." index="4"]
+
+position = Vector2( 240, 80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="4a - door_down_wrecked_l" type="Sprite" parent="." index="5"]
+
+position = Vector2( 160, 80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="4b - door_down_wrecked_r" type="Sprite" parent="." index="6"]
+
+position = Vector2( 320, 80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+

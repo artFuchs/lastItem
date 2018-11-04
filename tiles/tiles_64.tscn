@@ -515,4 +515,12 @@ bounce = 0.0
 position = Vector2( -10.8234, 0 )
 shape = SubResource( 11 )
 
+[node name="24 - debris_fill" type="Sprite" parent="." index="24"]
+
+position = Vector2( 496, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 256, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
 

@@ -12,6 +12,8 @@ const e = preload("res://scripts/enum.gd")
 var items = []
 var bullet = preload("res://objetos/bullet/bullet.tscn");
 var bulletSpeed = 200;
+var camera_zoom # zoom normal da camera
+var lunette_zoom = Vector2(1.5,1.5)
 
 export(float) var walk_speed = 300
 export(float) var grav_accel = 10
@@ -23,15 +25,20 @@ var grav_vel = 0
 
 onready var sprite = $Sprite
 var r = true # true se o player está virado para direita
-var on_ground = false
+
+var anim = ""
 var walking = false
 
 export (Texture) var PlatformTex;
 export (PackedScene) var platform
+export var p_dist= 8; #platform_distance
 var platform_collisions = [false,false,false,false]
 
 signal killed
 signal changed_items(items)
+
+func _ready():
+	camera_zoom = $Camera2D.zoom;
 
 func _physics_process(delta):
 	match state:
@@ -42,11 +49,20 @@ func _physics_process(delta):
 		States.LUNETTE:
 			process_lunette(delta)
 			
-	# animações
 	if r:
 		sprite.flip_h = false
 	else:
 		sprite.flip_h = true
+		
+	# animações
+	var new_animation = "idle";
+	if walking:
+		new_animation = "walking";
+	
+	if new_animation!=anim:
+		anim = new_animation;
+		$AnimationPlayer.play(anim)
+	
 	
 			
 func _draw():
@@ -65,10 +81,10 @@ func _draw():
 				else:
 					colors[i] = white
 				
-			draw_texture(PlatformTex, Vector2(0.5*w,-0.5*h), colors[0])
-			draw_texture(PlatformTex, Vector2(-1.5*w,-0.5*h), colors[1])
-			draw_texture(PlatformTex, Vector2(-0.5*w,-1.5*h), colors[2])
-			draw_texture(PlatformTex, Vector2(-0.5*w,0.5*h), colors[3])
+			draw_texture(PlatformTex, Vector2(0.5*w + p_dist,-0.5*h), colors[0]) # right
+			draw_texture(PlatformTex, Vector2(-1.5*w - p_dist,-0.5*h), colors[1]) # left
+			draw_texture(PlatformTex, Vector2(-0.5*w,-1.5*h - p_dist), colors[2]) # up
+			draw_texture(PlatformTex, Vector2(-0.5*w,0.5*h + p_dist), colors[3]) # down
 		
 
 func process_normal(delta):
@@ -108,6 +124,12 @@ func process_normal(delta):
 	
 	# mover
 	move_and_slide(linear_speed, -gravity)
+	
+	# atualizar informações para animação
+	if (target_speed != 0 and is_on_floor()):
+		walking = true;
+	else:
+		walking = false;
 
 func process_lunette(delta):
 	var d = 16;
@@ -124,16 +146,16 @@ func process_lunette(delta):
 	
 	if Input.is_action_just_pressed("item"):
 		$Camera2D.transform = Transform()	
-		$Camera2D.set_zoom(Vector2(1,1))
+		$Camera2D.set_zoom(camera_zoom)
 		state = States.NORMAL
 	
 func process_platform(delta):
 	var w = PlatformTex.get_width()
 	var h = PlatformTex.get_height()
-	platform_collisions[0] = test_move(transform, w*gravity.rotated(3.1415*1.5)) # right
-	platform_collisions[1] = test_move(transform, w*gravity.rotated(3.1415*0.5)) # left
-	platform_collisions[2] = test_move(transform, h*gravity.rotated(-3.1415)) # up
-	platform_collisions[3] = test_move(transform, h*gravity) # down
+	platform_collisions[0] = test_move(transform, (p_dist+w)*gravity.rotated(3.1415*1.5)) # right
+	platform_collisions[1] = test_move(transform, (p_dist+w)*gravity.rotated(3.1415*0.5)) # left
+	platform_collisions[2] = test_move(transform, (p_dist+h)*gravity.rotated(-3.1415)) # up
+	platform_collisions[3] = test_move(transform, (p_dist+h)*gravity) # down
 	update()
 	
 	if Input.is_action_just_pressed("item"): #cancel
@@ -143,22 +165,22 @@ func process_platform(delta):
 		update()
 	
 	if Input.is_action_just_pressed("right") and !platform_collisions[0]:
-		create_platform(Vector2(w, 0))
+		create_platform(Vector2(p_dist+w, 0))
 		state = States.NORMAL
 		update()
 		
 	if Input.is_action_just_pressed("left") and !platform_collisions[1]:
-		create_platform(Vector2(-w, 0))
+		create_platform(Vector2(-p_dist-w, 0))
 		state = States.NORMAL
 		update()
 	
 	if Input.is_action_just_pressed("jump") and !platform_collisions[2]:
-		create_platform(Vector2(0, -h))
+		create_platform(Vector2(0, -p_dist-h))
 		state = States.NORMAL
 		update()
 	
 	if Input.is_action_just_pressed("down") and !platform_collisions[3]:
-		create_platform(Vector2(0, h))
+		create_platform(Vector2(0, p_dist+h))
 		state = States.NORMAL
 		update()
 	
@@ -185,7 +207,7 @@ func use_item():
 			self.rotate(3.141592)
 		e.Items.LUNETTE:
 			state = States.LUNETTE
-			$Camera2D.set_zoom(Vector2(2,2))
+			$Camera2D.set_zoom(lunette_zoom)
 		e.Items.PLATFORM:
 			state = States.PLATFORM		
 			update()
