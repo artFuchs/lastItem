@@ -11,7 +11,7 @@
 [ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=10]
 
-[node name="scene" type="Node"]
+[node name="scene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -48,7 +48,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="item9" parent="collectabels" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 144, 336 )
-item = 7
+item = 6
 
 [node name="item10" parent="collectabels" index="1" instance=ExtResource( 3 )]
 
@@ -133,13 +133,10 @@ position = Vector2( -31.7427, -617.881 )
 
 [node name="player" parent="." index="4" instance=ExtResource( 9 )]
 
-position = Vector2( 209.065, 319.475 )
-_sections_unfolded = [ "Collision", "Pause", "Pickable" ]
+position = Vector2( 224, 320 )
 
 [node name="UI" parent="." index="5" instance=ExtResource( 10 )]
 
 [connection signal="level_end" from="flag" to="." method="_on_flag_level_end"]
-
-[connection signal="changed_items" from="player" to="UI" method="_on_player_changed_items"]
 
 

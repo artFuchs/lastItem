@@ -20,7 +20,11 @@ export(float) var jump_force = 300
 export var gravity = Vector2(0,1)
 
 var grav_vel = 0
+
+onready var sprite = $Sprite
 var r = true # true se o player está virado para direita
+var on_ground = false
+var walking = false
 
 export (Texture) var PlatformTex;
 export (PackedScene) var platform
@@ -30,7 +34,6 @@ signal killed
 signal changed_items(items)
 
 func _physics_process(delta):
-	
 	match state:
 		States.NORMAL:
 			process_normal(delta)
@@ -38,6 +41,13 @@ func _physics_process(delta):
 			process_platform(delta)
 		States.LUNETTE:
 			process_lunette(delta)
+			
+	# animações
+	if r:
+		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
+	
 			
 func _draw():
 	match state:
@@ -114,6 +124,7 @@ func process_lunette(delta):
 	
 	if Input.is_action_just_pressed("item"):
 		$Camera2D.transform = Transform()	
+		$Camera2D.set_zoom(Vector2(1,1))
 		state = States.NORMAL
 	
 func process_platform(delta):
@@ -174,8 +185,9 @@ func use_item():
 			self.rotate(3.141592)
 		e.Items.LUNETTE:
 			state = States.LUNETTE
+			$Camera2D.set_zoom(Vector2(2,2))
 		e.Items.PLATFORM:
-			state = States.PLATFORM
+			state = States.PLATFORM		
 			update()
 		_:
 			pass

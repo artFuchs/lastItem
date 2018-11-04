@@ -24,6 +24,8 @@ func set_item(new_value):
 			$label.set_text("lunette")
 		e.Items.PLATFORM:
 			$label.set_text("platform")
+		_:
+			$label.set_text("")
 
 func _ready():
 	connect("body_entered", self, "_on_item_body_entered")
