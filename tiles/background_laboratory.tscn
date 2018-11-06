@@ -11,7 +11,15 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="1 - door_up" type="Sprite" parent="." index="1"]
+[node name="0b - wall_hole" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, 80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="1 - door_up" type="Sprite" parent="." index="2"]
 
 position = Vector2( 80, 0 )
 texture = ExtResource( 1 )
@@ -19,7 +27,7 @@ region_enabled = true
 region_rect = Rect2( 64, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="2 - door_down" type="Sprite" parent="." index="2"]
+[node name="2 - door_down" type="Sprite" parent="." index="3"]
 
 position = Vector2( 80, 80 )
 texture = ExtResource( 1 )
@@ -27,7 +35,7 @@ region_enabled = true
 region_rect = Rect2( 64, 64, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="3 - door_up_wrecked" type="Sprite" parent="." index="3"]
+[node name="3 - door_up_wrecked" type="Sprite" parent="." index="4"]
 
 position = Vector2( 240, 0 )
 texture = ExtResource( 1 )
@@ -35,7 +43,7 @@ region_enabled = true
 region_rect = Rect2( 192, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="4 - door_down_wrecked" type="Sprite" parent="." index="4"]
+[node name="4 - door_down_wrecked" type="Sprite" parent="." index="5"]
 
 position = Vector2( 240, 80 )
 texture = ExtResource( 1 )
@@ -43,7 +51,7 @@ region_enabled = true
 region_rect = Rect2( 192, 64, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="4a - door_down_wrecked_l" type="Sprite" parent="." index="5"]
+[node name="4a - door_down_wrecked_l" type="Sprite" parent="." index="6"]
 
 position = Vector2( 160, 80 )
 texture = ExtResource( 1 )
@@ -51,12 +59,76 @@ region_enabled = true
 region_rect = Rect2( 128, 64, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="4b - door_down_wrecked_r" type="Sprite" parent="." index="6"]
+[node name="4b - door_down_wrecked_r" type="Sprite" parent="." index="7"]
 
 position = Vector2( 320, 80 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 256, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="5 - window" type="Sprite" parent="." index="8"]
+
+position = Vector2( 160, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="6 - window_wrecked" type="Sprite" parent="." index="9"]
+
+position = Vector2( 320, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="7 - window_wrecked_up" type="Sprite" parent="." index="10"]
+
+position = Vector2( 400, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 320, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="7a - window_wrecked_down" type="Sprite" parent="." index="11"]
+
+position = Vector2( 400, 80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 320, 64, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="9 - rocks" type="Sprite" parent="." index="12"]
+
+position = Vector2( 400, 160 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 320, 128, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="8 - big_window_l" type="Sprite" parent="." index="13"]
+
+position = Vector2( 0, 160 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 128, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="8a - big_window_c" type="Sprite" parent="." index="14"]
+
+position = Vector2( 80, 160 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 128, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="8b - big_window_r" type="Sprite" parent="." index="15"]
+
+position = Vector2( 160, 160 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 128, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 
