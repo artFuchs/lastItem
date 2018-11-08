@@ -44,6 +44,7 @@ __meta__ = {
 
 [node name="collectabels" type="Node" parent="." index="1"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="item9" parent="collectabels" index="0" instance=ExtResource( 3 )]
@@ -111,11 +112,11 @@ scale = Vector2( 0.764022, 0.490613 )
 
 [node name="laser" parent="obstacles" index="2" instance=ExtResource( 5 )]
 
-position = Vector2( 48, 352 )
+position = Vector2( 48, 348.351 )
 
 [node name="laser2" parent="obstacles" index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 624, 352 )
+position = Vector2( 624, 347.759 )
 
 [node name="box" parent="obstacles" index="4" instance=ExtResource( 6 )]
 

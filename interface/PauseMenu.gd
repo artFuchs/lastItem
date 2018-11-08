@@ -33,6 +33,7 @@ func _on_resume_button_pressed():
 	pass
 	
 func _on_button_menu_pressed():
+	get_tree().paused = false
 	get_node("/root/global").goto_scene_path("res://interface/main menu.tscn");
 
 func _on_popup_hide():

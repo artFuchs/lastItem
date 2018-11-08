@@ -14,6 +14,7 @@ func _ready():
 			$PanelLevels/VBoxContainer.add_child(b);
 			i+=1;
 	$PanelLevels.hide();
+	get_tree().paused = false;
 
 # loads an level
 func load_level(level_num):
