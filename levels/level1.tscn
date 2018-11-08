@@ -10,7 +10,7 @@
 [ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=9]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -66,68 +66,64 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="collectabels" type="Node" parent="." index="2"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="luneta" parent="collectabels" index="0" instance=ExtResource( 3 )]
+[node name="itemLuneta" parent="collectabels" index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 32, 560 )
+position = Vector2( 32.9271, 560 )
 item = 6
 
 [node name="item" parent="collectabels" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -64, 560 )
-item = 1
 
 [node name="item2" parent="collectabels" index="2" instance=ExtResource( 3 )]
 
-position = Vector2( -160, 560 )
+position = Vector2( -163.934, 560 )
 item = 4
 
 [node name="item3" parent="collectabels" index="3" instance=ExtResource( 3 )]
 
-position = Vector2( -256, 560 )
+position = Vector2( -255.935, 560 )
 item = 4
 
 [node name="item4" parent="collectabels" index="4" instance=ExtResource( 3 )]
 
-position = Vector2( -160, 400 )
+position = Vector2( -164.327, 399.537 )
 item = 7
 
-[node name="item6" parent="collectabels" index="5" instance=ExtResource( 3 )]
+[node name="item5" parent="collectabels" index="5" instance=ExtResource( 3 )]
 
-position = Vector2( -64, 400 )
+position = Vector2( -67.93, 399.537 )
 item = 5
 
-[node name="item7" parent="collectabels" index="6" instance=ExtResource( 3 )]
+[node name="item6" parent="collectabels" index="6" instance=ExtResource( 3 )]
 
-position = Vector2( 32, 400 )
+position = Vector2( 27.8688, 399.537 )
 item = 5
 
-[node name="item8" parent="collectabels" index="7" instance=ExtResource( 3 )]
+[node name="item7" parent="collectabels" index="7" instance=ExtResource( 3 )]
 
-position = Vector2( 128, 400 )
+position = Vector2( 124.266, 399.537 )
 item = 5
 
-[node name="item9" parent="collectabels" index="8" instance=ExtResource( 3 )]
+[node name="item8" parent="collectabels" index="8" instance=ExtResource( 3 )]
 
-position = Vector2( 96, 240 )
+position = Vector2( 94.729, 241.412 )
 item = 7
 
-[node name="item10" parent="collectabels" index="9" instance=ExtResource( 3 )]
+[node name="item9" parent="collectabels" index="9" instance=ExtResource( 3 )]
 
-position = Vector2( 0, 240 )
+position = Vector2( -1.83147, 241.412 )
 item = 2
 
-[node name="item11" parent="collectabels" index="10" instance=ExtResource( 3 )]
+[node name="item10" parent="collectabels" index="10" instance=ExtResource( 3 )]
 
-position = Vector2( -96, 240 )
-item = 1
+position = Vector2( -98.392, 241.412 )
 
-[node name="item12" parent="collectabels" index="11" instance=ExtResource( 3 )]
+[node name="item11" parent="collectabels" index="11" instance=ExtResource( 3 )]
 
-position = Vector2( -192, 240 )
-item = 1
+position = Vector2( -194.465, 241.412 )
 
 [node name="obstacles" type="Node" parent="." index="3"]
 
@@ -257,7 +253,6 @@ position = Vector2( 2384, 544 )
 [node name="player" parent="." index="6" instance=ExtResource( 8 )]
 
 position = Vector2( 288, 512 )
-p_dist = 8
 
 [node name="UI" parent="." index="7" instance=ExtResource( 9 )]
 

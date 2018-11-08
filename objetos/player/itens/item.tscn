@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objetos/player/itens/item.gd" type="Script" id=1]
-[ext_resource path="res://sprites/circle.png" type="Texture" id=2]
+[ext_resource path="res://objetos/player/itens/icons/dj.png" type="Texture" id=2]
+[ext_resource path="res://objetos/player/itens/icons/push_.png" type="Texture" id=3]
+[ext_resource path="res://objetos/player/itens/icons/ccw.png" type="Texture" id=4]
+[ext_resource path="res://objetos/player/itens/icons/cw.png" type="Texture" id=5]
+[ext_resource path="res://objetos/player/itens/icons/flip_.png" type="Texture" id=6]
+[ext_resource path="res://objetos/player/itens/icons/luneta.png" type="Texture" id=7]
+[ext_resource path="res://objetos/player/itens/icons/platform_.png" type="Texture" id=8]
+[ext_resource path="res://objetos/player/itens/liquido_frasco.png" type="Texture" id=9]
+[ext_resource path="res://objetos/player/itens/frasco.png" type="Texture" id=10]
+[ext_resource path="res://objetos/player/itens/balao.png" type="Texture" id=11]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
+extents = Vector2( 5.96141, 13.6407 )
 
 [node name="item" type="Area2D"]
 
@@ -21,37 +30,41 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
-item = null
+item = 1
+textures = [ null, ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -0.0151078, 0.0740556 )
-scale = Vector2( 0.314675, 0.312686 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
+visible = false
 shape = SubResource( 1 )
 
-[node name="label" type="Label" parent="." index="2"]
+[node name="liquido" type="Sprite" parent="." index="1"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -20.0
-margin_top = -27.0
-margin_right = 20.0
-margin_bottom = -13.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+modulate = Color( 0.819608, 0, 0.698039, 1 )
+position = Vector2( 0.0897019, 6.29285 )
+scale = Vector2( 0.202342, 0.195941 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="frasco" type="Sprite" parent="." index="2"]
+
+position = Vector2( -0.0151078, 0.0740556 )
+scale = Vector2( 0.201151, 0.19988 )
+texture = ExtResource( 10 )
+
+[node name="balao" type="Sprite" parent="." index="3"]
+
+self_modulate = Color( 0.819608, 0, 0.698039, 1 )
+position = Vector2( 0, -30.3139 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="balao" index="0"]
+
+position = Vector2( 0, -10 )
+scale = Vector2( 0.341617, 0.341617 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 

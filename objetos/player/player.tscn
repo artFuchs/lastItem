@@ -301,11 +301,9 @@ p_dist = 8
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
 modulate = Color( 0.61908, 0.382812, 1, 1 )
-position = Vector2( -0.148438, 0 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 5
 flip_h = true
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
