@@ -11,8 +11,12 @@ config_version=3
 [application]
 
 config/name="LastItem"
-run/main_scene="res://levels/level1.tscn"
+run/main_scene="res://interface/main menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://scripts/global.gd"
 
 [input]
 

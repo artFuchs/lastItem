@@ -10,7 +10,7 @@
 [ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=9]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -66,6 +66,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="collectabels" type="Node" parent="." index="2"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="itemLuneta" parent="collectabels" index="0" instance=ExtResource( 3 )]
@@ -207,8 +208,8 @@ scale = Vector2( 0.492188, 2.05842 )
 
 [node name="out_of_level" parent="obstacles" index="15" instance=ExtResource( 4 )]
 
-position = Vector2( 848.835, -1235.65 )
-scale = Vector2( 63.4604, 0.575292 )
+position = Vector2( 867.506, -541.824 )
+scale = Vector2( 19.7761, 0.744209 )
 
 [node name="laser2" parent="obstacles" index="16" instance=ExtResource( 5 )]
 
@@ -256,13 +257,6 @@ position = Vector2( 288, 512 )
 
 [node name="UI" parent="." index="7" instance=ExtResource( 9 )]
 
-editor/display_folded = true
-
-[node name="MarginContainer" parent="UI" index="0"]
-
-editor/display_folded = true
-
 [connection signal="level_end" from="flag" to="." method="_on_flag_level_end"]
 
 
-[editable path="UI"]

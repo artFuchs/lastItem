@@ -37,6 +37,7 @@ textures = [ null, ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtReso
 
 visible = false
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="liquido" type="Sprite" parent="." index="1"]
 
