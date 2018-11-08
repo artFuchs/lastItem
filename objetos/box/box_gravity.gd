@@ -37,6 +37,7 @@ func _physics_process(delta):
 		var motion = move_and_slide(linear_speed, -gravity);
 		if motion == Vector2():
 			awakened = false
+			$Sprite.frame = 0
 	
 		if is_on_wall():
 			movement_speed = 0;

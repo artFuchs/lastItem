@@ -20,6 +20,7 @@ func _physics_process(delta):
 		transform = transform.translated(linear_speed*delta)
 	else:
 		awakened = false
+		$Sprite.frame = 0
 	set_collision_layer_bit(1,1)
 	set_collision_mask_bit(1,1)
 	
@@ -29,3 +30,4 @@ func move(direction, speed):
 	movement_dir = direction;
 	movement_speed = wake_speed
 	awakened = true;
+	$Sprite.frame = 1;

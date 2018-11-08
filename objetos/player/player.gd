@@ -4,14 +4,16 @@ enum States{
 	NORMAL,
 	PLATFORM,
 	LUNETTE,
-	STOPED,
+	PUSHING,
 }
 var state = States.NORMAL
 
 const e = preload("res://scripts/enum.gd")
 var items = []
-var bullet = preload("res://objetos/bullet/bullet.tscn");
+
+export var bullet = preload("res://objetos/bullet/bullet.tscn");
 var bulletSpeed = 200;
+
 var camera_zoom # zoom normal da camera
 var lunette_zoom = Vector2(1.5,1.5)
 
@@ -53,16 +55,30 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	else:
 		sprite.flip_h = true
-		
+
 	# animações
 	var new_animation = "idle";
-	if walking:
-		new_animation = "walking";
+	
+	if state == States.PUSHING:
+		if is_on_floor():
+			new_animation = "push";
+		else:
+			new_animation = "air_push";
+	elif state == States.NORMAL:
+		if is_on_floor():
+			if walking:
+				new_animation = "walking";
+		else:
+			if grav_vel > 100:
+				new_animation = "falling";
+			elif grav_vel < -100:
+				new_animation = "jump";
+			else:
+				new_animation = "air_neutral";
 	
 	if new_animation!=anim:
 		anim = new_animation;
 		$AnimationPlayer.play(anim)
-	
 	
 			
 func _draw():
@@ -183,7 +199,7 @@ func process_platform(delta):
 		create_platform(Vector2(0, p_dist+h))
 		state = States.NORMAL
 		update()
-	
+		
 func jump():
 	grav_vel = -jump_force;
 	
@@ -195,7 +211,7 @@ func use_item():
 		e.Items.JUMP:
 			jump()
 		e.Items.PUSHER:
-			shot_pusher()
+			state = States.PUSHING
 		e.Items.GRAVITY_R:
 			gravity = gravity.rotated(3.141592*3/2)
 			self.rotate(3.141592*3/2)
@@ -219,12 +235,14 @@ func use_item():
 func shot_pusher():
 	var b = bullet.instance();
 	get_parent().add_child(b)
+	b.rotation = self.rotation
 	if r:
 		b.position = to_global($pos_r.position)
 		b.motion = gravity.rotated(3.141592*3/2)
 	else:
 		b.position = to_global($pos_l.position)
 		b.motion = gravity.rotated(3.141592*1/2)
+		b.flip();
 	b.motion*= bulletSpeed
 	
 func create_platform(pos):
@@ -243,5 +261,5 @@ func kill():
 	emit_signal("killed")
 	queue_free()
 	
-func _input_event(viewport, event, shape_idx):
-	kill()
+func set_state(s):
+	state = s;

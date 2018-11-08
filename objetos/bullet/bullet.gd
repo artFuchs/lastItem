@@ -9,4 +9,8 @@ func _physics_process(delta):
 		if other.has_method("move"):
 			other.move(motion.normalized(), motion.length());
 		queue_free();
+		
+func flip():
+	$Sprite2.flip_h = !$Sprite2.flip_h;
+	$Sprite.flip_h = !$Sprite.flip_h;
 

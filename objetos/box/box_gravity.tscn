@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://objetos/box/box_gravity.gd" type="Script" id=1]
-[ext_resource path="res://sprites/square.png" type="Texture" id=2]
+[ext_resource path="res://objetos/box/box_sprite_frames.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,11 +25,13 @@ grav_accel = 10
 max_grav_vel = 300
 gravity = Vector2( 0, 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
-modulate = Color( 0.195312, 0.137794, 0.0480652, 1 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
+position = Vector2( -0.00221296, -0.00221296 )
+scale = Vector2( 0.12929, 0.12929 )
+frames = ExtResource( 2 )
+animation = "default"
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
