@@ -1,4 +1,4 @@
-extends CanvasLayer
+  extends CanvasLayer
 
 export (Array) var levels;
 
