@@ -44,7 +44,7 @@ gravity = Vector2( 0, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "walking"
-frame = 1
+frame = 2
 playing = true
 _sections_unfolded = [ "Transform" ]
 
@@ -57,7 +57,7 @@ shape = SubResource( 2 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 50, 0 )
-collision_mask = 3
+collision_mask = 11
 
 [node name="Label" type="Label" parent="." index="3"]
 
