@@ -4,14 +4,14 @@
 [ext_resource path="res://tiles/tiles.res" type="TileSet" id=2]
 [ext_resource path="res://objetos/player/itens/item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objetos/spikes/spikes.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objetos/laser/laserRay.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objetos/box/box_gravity.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objetos/box/box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objetos/box/box_gravity.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objetos/box/box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objetos/enemy/enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=10]
 
-[node name="scene" type="Node"]
+[node name="scene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -110,23 +110,17 @@ scale = Vector2( 9.2528, 0.718748 )
 position = Vector2( 807.551, 272.3 )
 scale = Vector2( 0.764022, 0.490613 )
 
-[node name="laser" parent="obstacles" index="2" instance=ExtResource( 5 )]
-
-position = Vector2( 48, 348.351 )
-
-[node name="laser2" parent="obstacles" index="3" instance=ExtResource( 5 )]
-
-position = Vector2( 624, 347.759 )
-
-[node name="box" parent="obstacles" index="4" instance=ExtResource( 6 )]
+[node name="box" parent="obstacles" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 1130.05, -61.5504 )
 _sections_unfolded = [ "Collision", "collision" ]
 wake_speed = 40.0
 
-[node name="box2" parent="obstacles" index="5" instance=ExtResource( 7 )]
+[node name="box2" parent="obstacles" index="3" instance=ExtResource( 6 )]
 
 position = Vector2( 944, -144 )
+
+[node name="enemy" parent="obstacles" index="4" instance=ExtResource( 7 )]
 
 [node name="flag" parent="." index="3" instance=ExtResource( 8 )]
 
@@ -135,6 +129,7 @@ position = Vector2( -31.7427, -617.881 )
 [node name="player" parent="." index="4" instance=ExtResource( 9 )]
 
 position = Vector2( 224, 320 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 
 [node name="UI" parent="." index="5" instance=ExtResource( 10 )]
 

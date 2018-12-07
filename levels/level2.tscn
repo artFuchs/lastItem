@@ -19,7 +19,7 @@ _data = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]

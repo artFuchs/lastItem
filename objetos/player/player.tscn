@@ -284,7 +284,7 @@ tracks/1/keys = {
 position = Vector2( 309.073, 324.254 )
 input_pickable = false
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable" ]
@@ -304,6 +304,7 @@ modulate = Color( 0.61908, 0.382812, 1, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 2
 flip_h = true
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
