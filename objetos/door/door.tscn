@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objetos/door/door.gd" type="Script" id=1]
+[ext_resource path="res://sprites/square.png" type="Texture" id=2]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 176 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 80 )
+
+[node name="door" type="Path2D"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+step = 0.2
+switch_path = null
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." index="0"]
+
+rotation = 1.5708
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = false
+loop = false
+lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="body" type="StaticBody2D" parent="PathFollow2D" index="0"]
+
+rotation = -1.5708
+input_pickable = false
+collision_layer = 3
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D/body" index="0"]
+
+scale = Vector2( 1, 5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/body" index="1"]
+
+shape = SubResource( 2 )
+
+

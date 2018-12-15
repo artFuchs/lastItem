@@ -14,6 +14,6 @@ func _ready():
 	tween.set_repeat(true)
 	tween.start()
 
-func _process(delta):
+#func _process(delta):
 
-	print($PathFollow2D.unit_offset)
+	#print($PathFollow2D.unit_offset)

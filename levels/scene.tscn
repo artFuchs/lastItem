@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tiles.res" type="TileSet" id=2]
@@ -6,12 +6,13 @@
 [ext_resource path="res://objetos/spikes/spikes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objetos/box/box_gravity.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objetos/box/box.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objetos/enemy/enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://interface/UI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface/UI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objetos/button/switch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objetos/door/door.tscn" type="PackedScene" id=11]
 
-[node name="scene" type="Node" index="0"]
+[node name="scene" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -47,56 +48,40 @@ __meta__ = {
 editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="item9" parent="collectabels" index="0" instance=ExtResource( 3 )]
-
-position = Vector2( 144, 336 )
-item = 7
-
-[node name="item10" parent="collectabels" index="1" instance=ExtResource( 3 )]
+[node name="item10" parent="collectabels" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 96, 336 )
 item = 2
 
-[node name="item" parent="collectabels" index="2" instance=ExtResource( 3 )]
-
-position = Vector2( 288, 336 )
-
-[node name="item2" parent="collectabels" index="3" instance=ExtResource( 3 )]
-
-position = Vector2( 336, 336 )
-
-[node name="item3" parent="collectabels" index="4" instance=ExtResource( 3 )]
-
-position = Vector2( 384, 336 )
-
-[node name="item4" parent="collectabels" index="5" instance=ExtResource( 3 )]
+[node name="item4" parent="collectabels" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 1052.07, -51.3524 )
 item = 2
 
-[node name="item5" parent="collectabels" index="6" instance=ExtResource( 3 )]
+[node name="item5" parent="collectabels" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 1275.87, -55.4605 )
 item = 3
 
-[node name="item6" parent="collectabels" index="7" instance=ExtResource( 3 )]
+[node name="item6" parent="collectabels" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 1392.2, -240.505 )
 rotation = -1.57079
 
-[node name="item7" parent="collectabels" index="8" instance=ExtResource( 3 )]
+[node name="item7" parent="collectabels" index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 1391.64, -297.373 )
 rotation = -1.57079
 item = 2
 
-[node name="item8" parent="collectabels" index="9" instance=ExtResource( 3 )]
+[node name="item8" parent="collectabels" index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 416.898, -177.144 )
 item = 5
 
 [node name="obstacles" type="Node" parent="." index="2"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="spikes" parent="obstacles" index="0" instance=ExtResource( 4 )]
@@ -120,18 +105,25 @@ wake_speed = 40.0
 
 position = Vector2( 944, -144 )
 
-[node name="enemy" parent="obstacles" index="4" instance=ExtResource( 7 )]
-
-[node name="flag" parent="." index="3" instance=ExtResource( 8 )]
+[node name="flag" parent="." index="3" instance=ExtResource( 7 )]
 
 position = Vector2( -31.7427, -617.881 )
 
-[node name="player" parent="." index="4" instance=ExtResource( 9 )]
+[node name="player" parent="." index="4" instance=ExtResource( 8 )]
 
 position = Vector2( 224, 320 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 
-[node name="UI" parent="." index="5" instance=ExtResource( 10 )]
+[node name="UI" parent="." index="5" instance=ExtResource( 9 )]
+
+[node name="switch" parent="." index="6" instance=ExtResource( 10 )]
+
+position = Vector2( 297.985, 305.644 )
+
+[node name="door" parent="." index="7" instance=ExtResource( 11 )]
+
+position = Vector2( 407.096, 270.581 )
+switch_path = NodePath("../switch")
 
 [connection signal="level_end" from="flag" to="." method="_on_flag_level_end"]
 
