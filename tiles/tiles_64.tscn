@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://tiles/tileset_64.png" type="Texture" id=1]
 
@@ -45,14 +45,34 @@ extents = Vector2( 10.3977, 31.4826 )
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12.0177, 32 )
+extents = Vector2( 28.9829, 13.6926 )
 
 [sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12.0314, 31.8685 )
+extents = Vector2( 28.729, 16.8087 )
 
 [sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.3043, 18.2654 )
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.4744, 18.0112 )
+
+[sub_resource type="RectangleShape2D" id=13]
+
+custom_solver_bias = 0.0
+extents = Vector2( 12.0177, 32 )
+
+[sub_resource type="RectangleShape2D" id=14]
+
+custom_solver_bias = 0.0
+extents = Vector2( 12.0314, 31.8685 )
+
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 21.0018, 31.8252 )
@@ -348,7 +368,6 @@ shape = SubResource( 7 )
 
 [node name="13 - debris3" type="Sprite" parent="." index="13"]
 
-editor/display_folded = true
 position = Vector2( 432, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -379,6 +398,21 @@ region_enabled = true
 region_rect = Rect2( 0, 320, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="14 - debris_letal" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="14 - debris_letal/StaticBody2D" index="0"]
+
+position = Vector2( 0, 16 )
+shape = SubResource( 9 )
+
 [node name="15 - debris_letal2_1" type="Sprite" parent="." index="15"]
 
 position = Vector2( 368, 80 )
@@ -386,6 +420,21 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 320, 64, 64 )
 _sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="15 - debris_letal2_1" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="15 - debris_letal2_1/StaticBody2D" index="0"]
+
+position = Vector2( 2.12634, 12.9396 )
+shape = SubResource( 10 )
 
 [node name="16 - debris_letal2_2" type="Sprite" parent="." index="16"]
 
@@ -395,6 +444,21 @@ region_enabled = true
 region_rect = Rect2( 128, 320, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="16 - debris_letal2_2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="16 - debris_letal2_2/StaticBody2D" index="0"]
+
+position = Vector2( -1.93817, 12.1213 )
+shape = SubResource( 11 )
+
 [node name="17 - debris_letal2_3" type="Sprite" parent="." index="17"]
 
 position = Vector2( 496, 80 )
@@ -402,6 +466,21 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 320, 64, 64 )
 _sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="17 - debris_letal2_3" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="17 - debris_letal2_3/StaticBody2D" index="0"]
+
+position = Vector2( -5.70795, 12.8427 )
+shape = SubResource( 12 )
 
 [node name="18 - door_up_cracked" type="Sprite" parent="." index="18"]
 
@@ -441,7 +520,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="20 - door_up/StaticBody2D" index="0"]
 
 position = Vector2( -5.0188, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 13 )
 
 [node name="21 - door_down" type="Sprite" parent="." index="21"]
 
@@ -465,7 +544,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="21 - door_down/StaticBody2D" index="0"]
 
 position = Vector2( -4.83539, -0.17482 )
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="22 - door_up_debris" type="Sprite" parent="." index="22"]
 
@@ -489,7 +568,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="22 - door_up_debris/StaticBody2D" index="0"]
 
 position = Vector2( -10.8234, 0 )
-shape = SubResource( 11 )
+shape = SubResource( 15 )
 
 [node name="23 - door_down_debris" type="Sprite" parent="." index="23"]
 
@@ -513,7 +592,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="23 - door_down_debris/StaticBody2D" index="0"]
 
 position = Vector2( -10.8234, 0 )
-shape = SubResource( 11 )
+shape = SubResource( 15 )
 
 [node name="24 - debris_fill" type="Sprite" parent="." index="24"]
 
