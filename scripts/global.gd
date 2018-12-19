@@ -37,13 +37,24 @@ func _deferred_goto_scene(scene):
 	get_tree().set_current_scene(instanced_scene)
 
 func set_level_stars(stars):
-	game["level_stars"][level] = stars
-	var total_stars = 0
-	for s in game["level_stars"]:
-		total_stars += s
-	game["stars"] = total_stars
+	if (level > -1 and game["level_stars"].size() > level):
+		game["level_stars"][level] = stars
+		var total_stars = 0
+		for s in game["level_stars"]:
+			total_stars += s
+		game["stars"] = total_stars
+		print("stars =" + str(total_stars))
+		return true
+	else:
+		var message = "GLOBAL.GD: error setting 'game[\"level_stars\"]["
+		message+=str(level)
+		message+="]' in 'set_level_stars()'"
+		print(message)
+		return false
 
 func set_level_scenes(scenes, keys):
+	if game["levels"].size() > 0:
+		return
 	game["levels"] = scenes
 	game["level_keys"] = keys
 	for s in scenes:
