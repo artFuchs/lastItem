@@ -46,6 +46,7 @@ func _on_button_play_pressed():
 	$PanelLevels.show()
 
 func gotoLevel(level):
-	var path = levels[level][0]
-	get_node("/root/global").goto_scene(path)
+	#var path = levels[level][0]
+	#get_node("/root/global").goto_scene(path)
+	global.goto_level(level)
 	
