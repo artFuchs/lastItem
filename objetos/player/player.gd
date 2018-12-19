@@ -5,6 +5,13 @@ enum States{
 	PLATFORM,
 	LUNETTE,
 	PUSHING,
+	DEAD
+}
+
+enum Killer{
+	FALL,
+	SPIKES,
+	LASER
 }
 var state = States.NORMAL
 
@@ -35,6 +42,13 @@ export (Texture) var PlatformTex;
 export (PackedScene) var platform
 export var p_dist= 8; #platform_distance
 var platform_collisions = [false,false,false,false]
+export var platform_time = 5
+var actual_platform_time = 0;
+
+# state DEAD
+var rot = 0;
+var deadtravel = 0;
+var killer = Killer.SPIKES
 
 signal killed
 signal changed_items(items)
@@ -50,6 +64,8 @@ func _physics_process(delta):
 			process_platform(delta)
 		States.LUNETTE:
 			process_lunette(delta)
+		States.DEAD:
+			process_dead(delta)
 			
 	if r:
 		sprite.flip_h = false
@@ -75,10 +91,20 @@ func _physics_process(delta):
 				new_animation = "jump";
 			else:
 				new_animation = "air_neutral";
+	elif state == States.PLATFORM:
+		new_animation = "plat"
+	elif state == States.DEAD:
+		if killer == Killer.FALL:
+			new_animation = "fall"
+		elif killer == Killer.SPIKES:
+			new_animation = "dead"
+		else:
+			new_animation = "dead_elet"
 	
 	if new_animation!=anim:
-		anim = new_animation;
-		$AnimationPlayer.play(anim)
+		anim = new_animation
+		$AnimationPlayer.play(anim)	
+		
 	
 			
 func _draw():
@@ -101,8 +127,8 @@ func _draw():
 			draw_texture(PlatformTex, Vector2(-1.5*w - p_dist,-0.5*h), colors[1]) # left
 			draw_texture(PlatformTex, Vector2(-0.5*w,-1.5*h - p_dist), colors[2]) # up
 			draw_texture(PlatformTex, Vector2(-0.5*w,0.5*h + p_dist), colors[3]) # down
+			draw_circle(Vector2(0,0), w*(actual_platform_time/platform_time), white)
 		
-
 func process_normal(delta):
 	var linear_speed = Vector2()
 	# update gravity
@@ -164,41 +190,68 @@ func process_lunette(delta):
 		$Camera2D.transform = Transform()	
 		$Camera2D.set_zoom(camera_zoom)
 		state = States.NORMAL
-	
+
 func process_platform(delta):
-	var w = PlatformTex.get_width()
-	var h = PlatformTex.get_height()
-	platform_collisions[0] = test_move(transform, (p_dist+w)*gravity.rotated(3.1415*1.5)) # right
-	platform_collisions[1] = test_move(transform, (p_dist+w)*gravity.rotated(3.1415*0.5)) # left
-	platform_collisions[2] = test_move(transform, (p_dist+h)*gravity.rotated(-3.1415)) # up
-	platform_collisions[3] = test_move(transform, (p_dist+h)*gravity) # down
-	update()
-	
-	if Input.is_action_just_pressed("item"): #cancel
-		state = States.NORMAL
-		items.push_front(e.Items.PLATFORM)
-		emit_signal("changed_items", items)
-		update()
-	
-	if Input.is_action_just_pressed("right") and !platform_collisions[0]:
-		create_platform(Vector2(p_dist+w, 0))
-		state = States.NORMAL
-		update()
+	if actual_platform_time > 0:
+		var w = PlatformTex.get_width()
+		var h = PlatformTex.get_height()
+		platform_collisions[0] = test_move(transform, (p_dist+w)*gravity.rotated(3.1415*1.5)) # right
+		platform_collisions[1] = test_move(transform, (p_dist+w)*gravity.rotated(3.1415*0.5)) # left
+		platform_collisions[2] = test_move(transform, (p_dist+h)*gravity.rotated(-3.1415)) # up
+		platform_collisions[3] = test_move(transform, (p_dist+h)*gravity) # down
 		
-	if Input.is_action_just_pressed("left") and !platform_collisions[1]:
-		create_platform(Vector2(-p_dist-w, 0))
+		if Input.is_action_just_pressed("item"): #cancel
+			state = States.NORMAL
+			items.push_front(e.Items.PLATFORM)
+			emit_signal("changed_items", items)
+		
+		if Input.is_action_just_pressed("right") and !platform_collisions[0]:
+			create_platform(Vector2(p_dist+w, 0))
+			state = States.NORMAL
+			
+		if Input.is_action_just_pressed("left") and !platform_collisions[1]:
+			create_platform(Vector2(-p_dist-w, 0))
+			state = States.NORMAL
+		
+		if Input.is_action_just_pressed("jump") and !platform_collisions[2]:
+			create_platform(Vector2(0, -p_dist-h))
+			state = States.NORMAL
+		
+		if Input.is_action_just_pressed("down") and !platform_collisions[3]:
+			create_platform(Vector2(0, p_dist+h))
+			state = States.NORMAL
+			
+		actual_platform_time -= delta
+		update()
+	else:
 		state = States.NORMAL
 		update()
+
+
+func process_dead(delta):
+	if killer == Killer.SPIKES:
+		if rot == 0:
+			rot = rand_range(-30,30)
+			grav_vel = rand_range(-150, -10)
+		sprite.rotation += rot*delta;
+			
+	if killer == Killer.SPIKES or killer == Killer.FALL:
+		grav_vel += grav_accel
+		position += gravity*grav_vel*delta
+		deadtravel += grav_vel*delta
+		if deadtravel > 400:
+			emit_signal("killed")
+			queue_free()
 	
-	if Input.is_action_just_pressed("jump") and !platform_collisions[2]:
-		create_platform(Vector2(0, -p_dist-h))
-		state = States.NORMAL
-		update()
+	if killer == Killer.LASER:
+		sprite.modulate = Color(1,1,1)
+		deadtravel += delta
+		if deadtravel > 3:
+			emit_signal("killed")
+			queue_free()
+		
+		
 	
-	if Input.is_action_just_pressed("down") and !platform_collisions[3]:
-		create_platform(Vector2(0, p_dist+h))
-		state = States.NORMAL
-		update()
 		
 func jump():
 	grav_vel = -jump_force;
@@ -225,7 +278,8 @@ func use_item():
 			state = States.LUNETTE
 			$Camera2D.set_zoom(lunette_zoom)
 		e.Items.PLATFORM:
-			state = States.PLATFORM		
+			state = States.PLATFORM
+			actual_platform_time = platform_time
 			update()
 		_:
 			pass
@@ -257,9 +311,25 @@ func collect(item):
 		items.append(item)
 		emit_signal("changed_items", items)
 
-func kill():
-	emit_signal("killed")
-	queue_free()
+func kill(killerobj = null):
+	if state != DEAD:
+		state = DEAD
+		var camera = $Camera2D
+		remove_child(camera)
+		var camPos = camera.position
+		get_parent().add_child(camera)
+		camera.position = to_global(camPos)
+		$CollisionShape2D.disabled = true;
+		
+		if !killerobj:
+			killer = Killer.SPIKES
+		elif killerobj.is_in_group("boundary"):
+			killer = Killer.FALL
+		elif killerobj.is_in_group("spikes"):
+			killer = Killer.SPIKES
+		elif killerobj.is_in_group("laser"):
+			killer = Killer.LASER
+			
 	
 func set_state(s):
 	state = s;

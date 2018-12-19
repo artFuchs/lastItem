@@ -7,7 +7,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 30.0413, 30.0413 )
 
-[node name="spike" type="Area2D"]
+[node name="spike" type="Area2D" groups=[
+"spikes",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

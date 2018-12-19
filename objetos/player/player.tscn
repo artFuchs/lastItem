@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://objetos/player/player.gd" type="Script" id=1]
 [ext_resource path="res://objetos/bullet/bullet.tscn" type="PackedScene" id=2]
@@ -8,18 +8,30 @@
 [ext_resource path="res://objetos/player/sprites/character_walking_1.svg" type="Texture" id=6]
 [ext_resource path="res://objetos/player/sprites/character_walking_2.svg" type="Texture" id=7]
 [ext_resource path="res://objetos/player/sprites/character_push_0.svg" type="Texture" id=8]
-[ext_resource path="res://objetos/player/sprites/character_push_1.svg" type="Texture" id=9]
-[ext_resource path="res://objetos/player/sprites/character_push_2.svg" type="Texture" id=10]
-[ext_resource path="res://objetos/player/sprites/character_jump.svg" type="Texture" id=11]
-[ext_resource path="res://objetos/player/sprites/character_air.svg" type="Texture" id=12]
-[ext_resource path="res://objetos/player/sprites/character_falling.svg" type="Texture" id=13]
-[ext_resource path="res://objetos/player/sprites/character_push_air_0.svg" type="Texture" id=14]
-[ext_resource path="res://objetos/player/sprites/character_push_air_1.svg" type="Texture" id=15]
+[ext_resource path="res://objetos/player/sprites/character_push_2.svg" type="Texture" id=9]
+[ext_resource path="res://objetos/player/sprites/character_jump.svg" type="Texture" id=10]
+[ext_resource path="res://objetos/player/sprites/character_air.svg" type="Texture" id=11]
+[ext_resource path="res://objetos/player/sprites/character_falling.svg" type="Texture" id=12]
+[ext_resource path="res://objetos/player/sprites/character_push_air_0.svg" type="Texture" id=13]
+[ext_resource path="res://objetos/player/sprites/character_push_air_1.svg" type="Texture" id=14]
+[ext_resource path="res://objetos/player/sprites/character_platform_0.svg" type="Texture" id=15]
+[ext_resource path="res://objetos/player/sprites/character_platform_1.svg" type="Texture" id=16]
+[ext_resource path="res://objetos/player/sprites/character_platform_2.svg" type="Texture" id=17]
+[ext_resource path="res://objetos/player/sprites/character_dead.svg" type="Texture" id=18]
+[ext_resource path="res://objetos/player/sprites/character_dead_bones.svg" type="Texture" id=19]
+[ext_resource path="res://objetos/player/animations/air_neutral.tres" type="Animation" id=20]
+[ext_resource path="res://objetos/player/animations/air_push.tres" type="Animation" id=21]
+[ext_resource path="res://objetos/player/animations/falling.tres" type="Animation" id=22]
+[ext_resource path="res://objetos/player/animations/idle.tres" type="Animation" id=23]
+[ext_resource path="res://objetos/player/animations/jump.tres" type="Animation" id=24]
+[ext_resource path="res://objetos/player/animations/platform.tres" type="Animation" id=25]
+[ext_resource path="res://objetos/player/animations/push.tres" type="Animation" id=26]
+[ext_resource path="res://objetos/player/animations/walking.tres" type="Animation" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -32,7 +44,7 @@ points = PoolVector2Array( -5, -15, 5, -15, 5, 10, 0, 15, -5, 10 )
 
 [sub_resource type="Animation" id=3]
 
-resource_name = "air_neutral"
+resource_name = "dead"
 length = 1.0
 loop = false
 step = 0.1
@@ -46,235 +58,26 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 13 ]
 }
 
 [sub_resource type="Animation" id=4]
 
-resource_name = "air_push"
-length = 0.5
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 9, 10 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0.927063, 0 ), Vector2( 1.64398, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "shot_pusher"
-}, {
-"args": [ 0 ],
-"method": "set_state"
-} ]
-}
-
-[sub_resource type="Animation" id=5]
-
-resource_name = "falling"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 8 ]
-}
-
-[sub_resource type="Animation" id=6]
-
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=7]
-
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 6 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=8]
-
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 2.36096, 0 ), Vector2( -0.148438, 0 ), Vector2( -6.10352e-05, -0.42923 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 3, 4, 5, 0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimationPlayer:current_animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 2,
-"values": [ "" ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "shot_pusher"
-}, {
-"args": [ 0 ],
-"method": "set_state"
-} ]
-}
-
-[sub_resource type="Animation" id=9]
-
-length = 0.8
+resource_name = "dead_elet"
+length = 1.2
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 0, 2, 0 ]
+"values": [ 14, 13, 14, 13, 14, 13 ]
 }
 
 [node name="player" type="KinematicBody2D" groups=[
@@ -287,7 +90,7 @@ collision_layer = 2
 collision_mask = 6
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pickable" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "collision" ]
 bullet = ExtResource( 2 )
 walk_speed = 150.0
 grav_accel = 10
@@ -297,20 +100,17 @@ gravity = Vector2( 0, 1 )
 PlatformTex = ExtResource( 3 )
 platform = ExtResource( 4 )
 p_dist = 8
+platform_time = 5
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
-modulate = Color( 0.61908, 0.382812, 1, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
-flip_h = true
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0, 0.896393 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
@@ -358,14 +158,16 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/air_neutral = SubResource( 3 )
-anims/air_push = SubResource( 4 )
-anims/falling = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/jump = SubResource( 7 )
-anims/push = SubResource( 8 )
-anims/walking = SubResource( 9 )
+anims/air_neutral = ExtResource( 20 )
+anims/air_push = ExtResource( 21 )
+anims/dead = SubResource( 3 )
+anims/dead_elet = SubResource( 4 )
+anims/falling = ExtResource( 22 )
+anims/idle = ExtResource( 23 )
+anims/jump = ExtResource( 24 )
+anims/plat = ExtResource( 25 )
+anims/push = ExtResource( 26 )
+anims/walking = ExtResource( 27 )
 blend_times = [  ]
-_sections_unfolded = [ "Playback Options" ]
 
 

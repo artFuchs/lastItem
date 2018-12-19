@@ -6,4 +6,4 @@ func _ready():
 
 func _on_area_entered(body):
 	if body.has_method("kill"):
-		body.kill();
+		body.kill(self);
