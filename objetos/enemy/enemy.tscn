@@ -58,7 +58,7 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Color", "Emission Shape", "Gravity", "Initial Velocity" ]
+_sections_unfolded = [ "Emission Shape", "Gravity", "Initial Velocity" ]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -86,7 +86,7 @@ points = PoolVector2Array( -5, -15, 5, -15, 5, 10, 0, 15, -5, 10 )
 
 [node name="enemy" type="KinematicBody2D"]
 
-modulate = Color( 1, 0.214844, 0.325256, 1 )
+modulate = Color( 0.859375, 0.271912, 0.354524, 1 )
 position = Vector2( 518.304, 326.491 )
 input_pickable = false
 collision_layer = 1
