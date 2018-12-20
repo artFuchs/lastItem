@@ -133,6 +133,9 @@ position = Vector2( -31.7427, -617.881 )
 [node name="player" parent="." index="4" instance=ExtResource( 14 )]
 
 position = Vector2( 1085.2, -149.413 )
+jumpFX = null
+platformFX = null
+itemCollectFX = null
 
 [node name="UI" parent="." index="5" instance=ExtResource( 15 )]
 
