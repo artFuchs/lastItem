@@ -12,7 +12,7 @@
 [ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=10]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=11]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -60,7 +60,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="itemLuneta" parent="collectables/items" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( 358.104, 495.193 )
+position = Vector2( 80, 400 )
 item = 6
 
 [node name="item" parent="collectables/items" index="1" instance=ExtResource( 4 )]
@@ -238,7 +238,7 @@ rotation = 3.14159
 
 [node name="TileMap2" type="TileMap" parent="." index="4"]
 
-modulate = Color( 0.774121, 0.773849, 0.808594, 1 )
+modulate = Color( 0.773849, 0.808594, 0.802894, 1 )
 scale = Vector2( 0.5, 0.5 )
 mode = 0
 tile_set = ExtResource( 8 )
@@ -264,7 +264,7 @@ __meta__ = {
 
 [node name="player" parent="." index="5" instance=ExtResource( 9 )]
 
-position = Vector2( 320, 480 )
+position = Vector2( 48, 384 )
 
 [node name="flag" parent="." index="6" instance=ExtResource( 10 )]
 

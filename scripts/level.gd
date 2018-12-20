@@ -11,6 +11,7 @@ func _ready():
 		p.connect("body_entered", self, "_on_point_collected", [p])
 	for f in get_tree().get_nodes_in_group("flag"):
 		f.connect("level_end", self, "_on_flag_level_end")
+	global.start_music()
 
 func restart_scene():
 	get_tree().reload_current_scene()

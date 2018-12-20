@@ -1,13 +1,17 @@
 extends Node
 
 var level = -1;
-
 var game = {
 	"stars" : 0,
 	"level_stars" : [],
 	"level_keys" : [],
 	"levels" : []
 }
+var audioPlayer = null
+func _ready():
+	audioPlayer = AudioStreamPlayer.new()
+	audioPlayer.bus = "music"
+	add_child(audioPlayer)
 
 func goto_scene(scene):
 	call_deferred("_deferred_goto_scene", scene)
@@ -78,3 +82,11 @@ func set_level_scenes(scenes, keys):
 	
 func get_stars():
 	return game["stars"]
+	
+func start_music():
+	if not audioPlayer.playing:
+		audioPlayer.stream = load("res://music/One Sly Move.ogg")
+		audioPlayer.play();
+	
+func stop_music():
+	audioPlayer.stop();

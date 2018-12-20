@@ -23,7 +23,7 @@ func _ready():
 			keys.append(l[1])
 	$PanelLevels.hide();
 	get_tree().paused = false;
-	# set game state
+	global.stop_music()
 	
 	game.set_level_scenes(lvs, keys)
 	
