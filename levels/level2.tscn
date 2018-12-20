@@ -218,11 +218,15 @@ position = Vector2( 0.194763, 0.242462 )
 rotation = -3.1413
 _sections_unfolded = [ "Collision", "Transform" ]
 laserDefect = false
+timeOn = 1
+timeOff = 1
 
 [node name="laser" parent="obstacles" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 656.091, 59.4346 )
 laserDefect = false
+timeOn = 1
+timeOff = 1
 
 [node name="enemy" type="Node" parent="obstacles" index="2"]
 

@@ -125,6 +125,8 @@ position = Vector2( 1010.2, -314.81 )
 rotation = 3.14159
 _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
 laserDefect = true
+timeOn = 1
+timeOff = 1
 
 [node name="flag" parent="." index="3" instance=ExtResource( 13 )]
 

@@ -1,7 +1,10 @@
 extends StaticBody2D
 
 export(bool) var laserDefect = false
+export(float) var timeOn = 1
+export(float) var timeOff = 1
 var laserOn = true
+
 
 
 func _ready():
