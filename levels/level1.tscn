@@ -44,10 +44,11 @@ __meta__ = {
 
 [node name="collectables" type="Node" parent="." index="1"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="items" type="Node" parent="collectables" index="0"]
+
+editor/display_folded = true
 
 [node name="itemLuneta" parent="collectables/items" index="0" instance=ExtResource( 3 )]
 
@@ -122,6 +123,7 @@ position = Vector2( 2015.61, -94.126 )
 
 [node name="obstacles" type="Node" parent="." index="2"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="spike" parent="obstacles" index="0" instance=ExtResource( 5 )]
