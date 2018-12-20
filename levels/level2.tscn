@@ -128,7 +128,6 @@ collision_mask = 16
 
 [node name="collectabels" type="Node" parent="." index="4"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="itemLuneta" parent="collectabels" index="0" instance=ExtResource( 5 )]
@@ -138,22 +137,22 @@ item = 6
 
 [node name="item3" parent="collectabels" index="1" instance=ExtResource( 5 )]
 
-position = Vector2( -113, 595 )
+position = Vector2( 207.736, 594.267 )
 item = 4
 
 [node name="item5" parent="collectabels" index="2" instance=ExtResource( 5 )]
 
-position = Vector2( 208, 595 )
+position = Vector2( 272.898, 594.581 )
 item = 7
 
 [node name="item12" parent="collectabels" index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 272, 595 )
+position = Vector2( 464.006, 595.301 )
 item = 2
 
 [node name="item6" parent="collectabels" index="4" instance=ExtResource( 5 )]
 
-position = Vector2( 144, 595 )
+position = Vector2( -112.463, 594.679 )
 item = 5
 
 [node name="item8" parent="collectabels" index="5" instance=ExtResource( 5 )]
@@ -163,12 +162,12 @@ item = 3
 
 [node name="item10" parent="collectabels" index="6" instance=ExtResource( 5 )]
 
-position = Vector2( -48, 595 )
+position = Vector2( 16.3739, 594.738 )
 item = 3
 
 [node name="item11" parent="collectabels" index="7" instance=ExtResource( 5 )]
 
-position = Vector2( 16, 595 )
+position = Vector2( 143.828, 594.339 )
 item = 3
 
 [node name="item13" parent="collectabels" index="8" instance=ExtResource( 5 )]
@@ -178,12 +177,12 @@ item = 7
 
 [node name="item14" parent="collectabels" index="9" instance=ExtResource( 5 )]
 
-position = Vector2( 399, 595 )
+position = Vector2( 400.298, 594.785 )
 item = 2
 
 [node name="item15" parent="collectabels" index="10" instance=ExtResource( 5 )]
 
-position = Vector2( 464, 595 )
+position = Vector2( -47.4669, 595 )
 item = 5
 
 [node name="obstacles" type="Node" parent="." index="5"]
