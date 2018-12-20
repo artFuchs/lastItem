@@ -4,7 +4,7 @@
 [ext_resource path="res://objetos/bullet/bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/square.png" type="Texture" id=3]
 [ext_resource path="res://objetos/box/box.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objetos/player/jump.wav" type="AudioStream" id=5]
+[ext_resource path="res://objetos/player/sounds/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://objetos/player/sounds/teleport.wav" type="AudioStream" id=6]
 [ext_resource path="res://objetos/player/sounds/drink-liquid.wav" type="AudioStream" id=7]
 [ext_resource path="res://objetos/player/sprites/character.svg" type="Texture" id=8]
@@ -30,6 +30,7 @@
 [ext_resource path="res://objetos/player/animations/platform.tres" type="Animation" id=28]
 [ext_resource path="res://objetos/player/animations/push.tres" type="Animation" id=29]
 [ext_resource path="res://objetos/player/animations/walking.tres" type="Animation" id=30]
+
 
 [sub_resource type="SpriteFrames" id=1]
 
