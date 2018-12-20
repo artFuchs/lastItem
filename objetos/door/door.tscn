@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objetos/door/door.gd" type="Script" id=1]
-[ext_resource path="res://sprites/square.png" type="Texture" id=2]
+[ext_resource path="res://objetos/door/door.png" type="Texture" id=2]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -50,7 +50,6 @@ _sections_unfolded = [ "Collision", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="PathFollow2D/body" index="0"]
 
-scale = Vector2( 1, 5 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 

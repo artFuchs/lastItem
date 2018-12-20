@@ -246,7 +246,7 @@ func process_dead(delta):
 	if killer == Killer.LASER:
 		sprite.modulate = Color(1,1,1)
 		deadtravel += delta
-		if deadtravel > 3:
+		if deadtravel > 2:
 			emit_signal("killed")
 			queue_free()
 		

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objetos/button/switch.gd" type="Script" id=1]
-[ext_resource path="res://sprites/square.png" type="Texture" id=2]
-[ext_resource path="res://sprites/triangle.png" type="Texture" id=3]
+[ext_resource path="res://objetos/button/button.png" type="Texture" id=2]
+[ext_resource path="res://objetos/button/button_pressed.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -16,9 +16,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
+extents = Vector2( 10.2424, 16.7411 )
 
-[node name="switch" type="StaticBody2D" index="0"]
+[node name="switch" type="StaticBody2D"]
 
 position = Vector2( 2608, 1296 )
 input_pickable = false
@@ -33,13 +33,14 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
-modulate = Color( 1, 0.9375, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "default"
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( -5.5481, 0 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
