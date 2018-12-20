@@ -48,6 +48,8 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="items" type="Node" parent="collectables" index="0"]
 
+editor/display_folded = true
+
 [node name="itemLuneta" parent="collectables/items" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 358.104, 495.193 )
