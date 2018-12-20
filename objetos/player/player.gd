@@ -50,6 +50,12 @@ var rot = 0;
 var deadtravel = 0;
 var killer = Killer.SPIKES
 
+# sounds
+export (AudioStreamSample) var jumpFX;
+export (AudioStreamSample) var platformFX;
+export (AudioStreamSample) var itemCollectFX;
+
+
 signal killed
 signal changed_items(items)
 
@@ -100,6 +106,8 @@ func _physics_process(delta):
 			new_animation = "dead"
 		else:
 			new_animation = "dead_elet"
+	elif state == States.LUNETTE:
+		new_animation = "plat"
 	
 	if new_animation!=anim:
 		anim = new_animation
@@ -255,6 +263,9 @@ func process_dead(delta):
 		
 func jump():
 	grav_vel = -jump_force;
+	if not $AudioPlayer.playing:
+		$AudioPlayer.set_stream(jumpFX)
+		$AudioPlayer.play()
 	
 func use_item():
 	if items.empty():
@@ -305,11 +316,15 @@ func create_platform(pos):
 	var p = platform.instance()
 	get_parent().add_child(p)
 	p.position = to_global(pos)
+	$AudioPlayer.set_stream(platformFX)
+	$AudioPlayer.play()
 	
 func collect(item):
 	if item >= e.Items.JUMP and item <= e.Items.PLATFORM:
 		items.append(item)
 		emit_signal("changed_items", items)
+		$AudioPlayer.set_stream(itemCollectFX)
+		$AudioPlayer.play()
 
 func kill(killerobj = null):
 	if state != DEAD:

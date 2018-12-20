@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objetos/laser/laserRay.gd" type="Script" id=1]
 [ext_resource path="res://objetos/laser/laser.svg" type="Texture" id=2]
+[ext_resource path="res://objetos/laser/laser_loop.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -71,5 +72,16 @@ position = Vector2( 0, -1.61989 )
 scale = Vector2( 0.0853721, 0.0853721 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 500.0
+attenuation = 1.0
+bus = "FX"
+area_mask = 2
 
 

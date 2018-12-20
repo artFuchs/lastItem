@@ -33,3 +33,4 @@ func _on_point_collected(collector, s):
 		s.queue_free()
 		stars += 1
 		$UI.update_points(stars)
+		$AudioPlayerStar.play()

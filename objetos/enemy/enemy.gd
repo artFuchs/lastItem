@@ -98,6 +98,7 @@ func _on_wait_end():
 		if c.is_class("Timer"):
 			c.queue_free();
 	turn();
+	$AudioPlayer.play();
 
 func turn():
 	r = !r
