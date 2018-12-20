@@ -4,7 +4,6 @@ export (Array) var levels;
 
 func _ready():
 	# load game information
-	var game = get_node("/root/global")
 	var i = 0
 	var lvs = []  # lvs and keys: variables to set the game levels scenes
 	var keys = [] 
@@ -14,7 +13,7 @@ func _ready():
 			b.set_text("Level "+str(i+1));
 			b.connect("pressed", self, "gotoLevel", [i])
 			b.size_flags_vertical = b.SIZE_EXPAND_FILL
-			if (game.get_stars() < l[1]):
+			if (global.get_stars() < l[1]):
 				b.disabled = true
 				b.set_text(b.get_text() + " - needs "+str(l[1]) + " stars to unlock");
 			$PanelLevels/VBoxContainer.add_child(b);
@@ -22,13 +21,11 @@ func _ready():
 			lvs.append(l[0])
 			keys.append(l[1])
 	$PanelLevels.hide();
+	$PanelCredits.hide();
 	get_tree().paused = false;
 	global.stop_music()
-	
-	game.set_level_scenes(lvs, keys)
-	
-	$LabelStars.set_text("Stars: " + str(game.get_stars()))
-	
+	global.set_level_scenes(lvs, keys)
+	$LabelStars.set_text("Stars: " + str(global.get_stars()))
 
 # loads an level
 func load_level(level_num):
@@ -41,12 +38,15 @@ func hide_panel(pname):
 	match pname :
 		"levels":
 			$PanelLevels.hide()
+		"credits":
+			$PanelCredits.hide()
 
 func _on_button_play_pressed():
 	$PanelLevels.show()
 
 func gotoLevel(level):
-	#var path = levels[level][0]
-	#get_node("/root/global").goto_scene(path)
 	global.goto_level(level)
 	
+
+func _on_button_credits_pressed():
+	$PanelCredits.show()
