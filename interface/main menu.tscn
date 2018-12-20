@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/UI_font1.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/UI_font_buttons.tres" type="DynamicFont" id=5]
 
-[node name="main menu" type="CanvasLayer"]
+[node name="main menu" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -15,8 +16,32 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
 levels = [ [ ExtResource( 2 ), 0 ], [ ExtResource( 3 ), 0 ] ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+[node name="Label" type="Label" parent="." index="0"]
 
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -195.0
+margin_top = 95.0
+margin_right = 194.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
+text = "UNTIL THE LAST ITEM"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
+
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -42,7 +67,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 448.0
-margin_bottom = 93.0
+margin_bottom = 55.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -50,22 +75,49 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Play"
+text = "Jogar"
 flat = false
 align = 1
-_sections_unfolded = [ "Focus", "Size Flags" ]
+_sections_unfolded = [ "Focus", "Size Flags", "custom_fonts" ]
 
-[node name="button_exit" type="Button" parent="VBoxContainer" index="1"]
+[node name="button_credits" type="Button" parent="VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 113.0
+margin_top = 75.0
+margin_right = 448.0
+margin_bottom = 130.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Créditos"
+flat = false
+align = 1
+_sections_unfolded = [ "Focus", "custom_fonts" ]
+
+[node name="button_exit" type="Button" parent="VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 150.0
 margin_right = 448.0
 margin_bottom = 207.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -75,17 +127,19 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Exit"
+text = "Sair"
 flat = false
 align = 1
-_sections_unfolded = [ "Focus" ]
+_sections_unfolded = [ "Focus", "custom_fonts" ]
 
-[node name="PanelLevels" type="PanelContainer" parent="." index="1"]
+[node name="PanelLevels" type="PanelContainer" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -102,6 +156,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Margin" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelLevels" index="0"]
 
@@ -162,14 +217,14 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 4 )
-text = "LEVELS"
+text = "NÍVEIS"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="LabelStars" type="Label" parent="." index="2"]
+[node name="LabelStars" type="Label" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -189,10 +244,196 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="PanelCredits" type="PanelContainer" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 24.0
+margin_right = 391.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelCredits" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 364.0
+margin_bottom = 549.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Button" type="Button" parent="PanelCredits/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 337.0
+margin_right = 357.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "X"
+flat = false
+align = 1
+
+[node name="Label" type="Label" parent="PanelCredits/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 357.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 5 )
+text = "CRÉDITOS"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelCredits/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 64.0
+margin_right = 357.0
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+UNTIL THE LAST ITEM
+
+PROGRAMAÇÃO:
+Arthur Lucena Fuchs
+Gabriel Warken
+
+DESIGN DE NÍVEIS:
+Arthur Lucena Fuchs
+Gabrie Warken
+
+ARTE:
+Arthur Lucena Fuchs
+
+FONTE:
+Rye
+Copyright (c) 2011 by Sorkin Type Co (www.sorkintype.com),
+Distribuida pela licensa OPEN FONT LICENSE (OFL).
+Disponível no site https://www.1001freefonts.com/
+
+SONS FX:
+sons retirados do site freesounds.org
+criação de plataforma: Elethorpia - teleport.wav
+pulo: kfatehi - launch.wav [edited]
+raio laser: peridactyloptrix - phaser-continuous-fire.wav [editado]
+coleta de estrelas: wagna - collect.wav 
+canção do inimigo: disanfins - disanfins [editado]
+coleta de poções: breviceps - drink liquid
+
+MUSICA:
+\"One Sly Move\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
+	
+
+
+"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "
+UNTIL THE LAST ITEM
+
+PROGRAMAÇÃO:
+Arthur Lucena Fuchs
+Gabriel Warken
+
+DESIGN DE NÍVEIS:
+Arthur Lucena Fuchs
+Gabrie Warken
+
+ARTE:
+Arthur Lucena Fuchs
+
+FONTE:
+Rye
+Copyright (c) 2011 by Sorkin Type Co (www.sorkintype.com),
+Distribuida pela licensa OPEN FONT LICENSE (OFL).
+Disponível no site https://www.1001freefonts.com/
+
+SONS FX:
+sons retirados do site freesounds.org
+criação de plataforma: Elethorpia - teleport.wav
+pulo: kfatehi - launch.wav [edited]
+raio laser: peridactyloptrix - phaser-continuous-fire.wav [editado]
+coleta de estrelas: wagna - collect.wav 
+canção do inimigo: disanfins - disanfins [editado]
+coleta de poções: breviceps - drink liquid
+
+MUSICA:
+\"One Sly Move\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
+	
+
+
+"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
 [connection signal="pressed" from="VBoxContainer/button_play" to="." method="_on_button_play_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/button_credits" to="." method="_on_button_credits_pressed"]
 
 [connection signal="pressed" from="VBoxContainer/button_exit" to="." method="exit"]
 
 [connection signal="pressed" from="PanelLevels/VBoxContainer/Button" to="." method="hide_panel" binds= [ "levels" ]]
+
+[connection signal="pressed" from="PanelCredits/VBoxContainer/Button" to="." method="hide_panel" binds= [ "credits" ]]
 
 
