@@ -113,13 +113,17 @@ func _process_animations():
 		sprite.flip_h = true
 	
 	var animation = "standing"
-	var animation_speed = 5;
+	var animation_speed = 5
 	
 	if running:
-		animation = "walking"
-		animation_speed = 10
+		animation = "running"
+		animation_speed = 5
+		$Particles2D.emitting = true
 	elif walking:
 		animation = "walking"
+		$Particles2D.emitting = false
+	else:
+		$Particles2D.emitting = false
 		
 	if sprite.get_animation() != animation:
 		sprite.play(animation)
