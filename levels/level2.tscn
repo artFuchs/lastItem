@@ -453,7 +453,7 @@ __meta__ = {
 
 [node name="player" parent="." index="6" instance=ExtResource( 14 )]
 
-position = Vector2( 914.751, 45.1835 )
+position = Vector2( -95.9618, 35.9109 )
 jumpFX = null
 platformFX = null
 itemCollectFX = null

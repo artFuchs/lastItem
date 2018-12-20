@@ -1,37 +1,27 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
-[ext_resource path="res://objetos/player/sounds/collect.wav" type="AudioStream" id=2]
-[ext_resource path="res://tiles/tiles_background_lab.res" type="TileSet" id=3]
-[ext_resource path="res://objetos/player/itens/item.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objetos/player/points/point.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objetos/spikes/spikes.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objetos/laser/laserRay.tscn" type="PackedScene" id=7]
-[ext_resource path="res://tiles/tiles.res" type="TileSet" id=8]
-[ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=10]
-[ext_resource path="res://interface/UI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://tiles/tiles_background_lab.res" type="TileSet" id=2]
+[ext_resource path="res://objetos/player/itens/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objetos/player/points/point.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objetos/spikes/spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objetos/laser/laserRay.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tiles/tiles.res" type="TileSet" id=7]
+[ext_resource path="res://objetos/player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/UI.tscn" type="PackedScene" id=10]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="AudioPlayerStar" type="AudioStreamPlayer" parent="." index="0"]
-
-stream = ExtResource( 2 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="TileMap_background" type="TileMap" parent="." index="1"]
+[node name="TileMap_background" type="TileMap" parent="." index="0"]
 
 modulate = Color( 0.406799, 0.408011, 0.484375, 1 )
 scale = Vector2( 0.5, 0.5 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 1
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -52,196 +42,198 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="collectables" type="Node" parent="." index="2"]
+[node name="collectables" type="Node" parent="." index="1"]
 
 _sections_unfolded = [ "Pause" ]
 
 [node name="items" type="Node" parent="collectables" index="0"]
 
-[node name="itemLuneta" parent="collectables/items" index="0" instance=ExtResource( 4 )]
+[node name="itemLuneta" parent="collectables/items" index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 80, 400 )
+position = Vector2( 384, 496 )
 item = 6
 
-[node name="item" parent="collectables/items" index="1" instance=ExtResource( 4 )]
+[node name="item" parent="collectables/items" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( -64, 560 )
 
-[node name="item2" parent="collectables/items" index="2" instance=ExtResource( 4 )]
+[node name="item2" parent="collectables/items" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 176, 272 )
 item = 4
 
-[node name="item3" parent="collectables/items" index="3" instance=ExtResource( 4 )]
+[node name="item3" parent="collectables/items" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 128, 272 )
 item = 4
 
-[node name="item4" parent="collectables/items" index="4" instance=ExtResource( 4 )]
+[node name="item4" parent="collectables/items" index="4" instance=ExtResource( 3 )]
 
 position = Vector2( -144, 272 )
 item = 7
 
-[node name="item5" parent="collectables/items" index="5" instance=ExtResource( 4 )]
+[node name="item5" parent="collectables/items" index="5" instance=ExtResource( 3 )]
 
 position = Vector2( -192, 400 )
 item = 5
 
-[node name="item6" parent="collectables/items" index="6" instance=ExtResource( 4 )]
+[node name="item6" parent="collectables/items" index="6" instance=ExtResource( 3 )]
 
 position = Vector2( -96, 400 )
 item = 5
 
-[node name="item7" parent="collectables/items" index="7" instance=ExtResource( 4 )]
+[node name="item7" parent="collectables/items" index="7" instance=ExtResource( 3 )]
 
 position = Vector2( -144, 400 )
 item = 5
 
-[node name="item8" parent="collectables/items" index="8" instance=ExtResource( 4 )]
+[node name="item8" parent="collectables/items" index="8" instance=ExtResource( 3 )]
 
 position = Vector2( -176, 272 )
 item = 7
 
-[node name="item9" parent="collectables/items" index="9" instance=ExtResource( 4 )]
+[node name="item9" parent="collectables/items" index="9" instance=ExtResource( 3 )]
 
 position = Vector2( -208, 272 )
 item = 2
 
-[node name="item10" parent="collectables/items" index="10" instance=ExtResource( 4 )]
+[node name="item10" parent="collectables/items" index="10" instance=ExtResource( 3 )]
 
 position = Vector2( -112, 560 )
 
-[node name="item11" parent="collectables/items" index="11" instance=ExtResource( 4 )]
+[node name="item11" parent="collectables/items" index="11" instance=ExtResource( 3 )]
 
 position = Vector2( -160, 560 )
 
 [node name="points" type="Node" parent="collectables" index="1"]
 
-[node name="point" parent="collectables/points" index="0" instance=ExtResource( 5 )]
+[node name="point" parent="collectables/points" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 855.94, 997.305 )
 
-[node name="point2" parent="collectables/points" index="1" instance=ExtResource( 5 )]
+[node name="point2" parent="collectables/points" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( -468.929, -69.6128 )
 
-[node name="point3" parent="collectables/points" index="2" instance=ExtResource( 5 )]
+[node name="point3" parent="collectables/points" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 2015.61, -94.126 )
 
-[node name="obstacles" type="Node" parent="." index="3"]
+[node name="obstacles" type="Node" parent="." index="2"]
 
 editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="spike" parent="obstacles" index="0" instance=ExtResource( 6 )]
+[node name="spike" parent="obstacles" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 1039.84, 556.745 )
 scale = Vector2( 0.106535, 0.39289 )
 
-[node name="spike16" parent="obstacles" index="1" instance=ExtResource( 6 )]
+[node name="spike16" parent="obstacles" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 911.609, 557.185 )
 scale = Vector2( 0.0993049, 0.39289 )
 
-[node name="spike17" parent="obstacles" index="2" instance=ExtResource( 6 )]
+[node name="spike17" parent="obstacles" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 1167.81, 558.065 )
 scale = Vector2( 0.122924, 0.39289 )
 
-[node name="spike2" parent="obstacles" index="3" instance=ExtResource( 6 )]
+[node name="spike2" parent="obstacles" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 1278.37, 557.244 )
 scale = Vector2( 0.855463, 0.42513 )
 
-[node name="spike3" parent="obstacles" index="4" instance=ExtResource( 6 )]
+[node name="spike3" parent="obstacles" index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 1491.15, 1010.36 )
 scale = Vector2( 15.4016, 0.5 )
 
-[node name="spike4" parent="obstacles" index="5" instance=ExtResource( 6 )]
+[node name="spike4" parent="obstacles" index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 1311.95, 880.724 )
 scale = Vector2( 4.01998, 0.5 )
 
-[node name="spike5" parent="obstacles" index="6" instance=ExtResource( 6 )]
+[node name="spike5" parent="obstacles" index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 689.018, 943.599 )
 scale = Vector2( 0.460067, 2.46697 )
 
-[node name="spike6" parent="obstacles" index="7" instance=ExtResource( 6 )]
+[node name="spike6" parent="obstacles" index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 736.151, 1008.63 )
 scale = Vector2( 1.03007, 0.434772 )
 
-[node name="spike7" parent="obstacles" index="8" instance=ExtResource( 6 )]
+[node name="spike7" parent="obstacles" index="8" instance=ExtResource( 5 )]
 
 position = Vector2( 800.188, 49.4956 )
 scale = Vector2( 5.86702, 0.434772 )
 
-[node name="spike8" parent="obstacles" index="9" instance=ExtResource( 6 )]
+[node name="spike8" parent="obstacles" index="9" instance=ExtResource( 5 )]
 
 position = Vector2( 813.22, -23.5099 )
 scale = Vector2( 0.241807, 0.470515 )
 
-[node name="spike9" parent="obstacles" index="10" instance=ExtResource( 6 )]
+[node name="spike9" parent="obstacles" index="10" instance=ExtResource( 5 )]
 
 position = Vector2( 1166.25, 49.2916 )
 scale = Vector2( 2.27526, 0.472398 )
 
-[node name="spike10" parent="obstacles" index="11" instance=ExtResource( 6 )]
+[node name="spike10" parent="obstacles" index="11" instance=ExtResource( 5 )]
 
 position = Vector2( 2063, 463.929 )
 scale = Vector2( 2.30381, 0.490007 )
 
-[node name="spike11" parent="obstacles" index="12" instance=ExtResource( 6 )]
+[node name="spike11" parent="obstacles" index="12" instance=ExtResource( 5 )]
 
 position = Vector2( 2168.77, 490.282 )
 scale = Vector2( 0.82801, 0.323221 )
 
-[node name="spike12" parent="obstacles" index="13" instance=ExtResource( 6 )]
+[node name="spike12" parent="obstacles" index="13" instance=ExtResource( 5 )]
 
 position = Vector2( -480, -144 )
 scale = Vector2( 2, 0.434772 )
 
-[node name="spike13" parent="obstacles" index="14" instance=ExtResource( 6 )]
+[node name="spike13" parent="obstacles" index="14" instance=ExtResource( 5 )]
 
 position = Vector2( 2160, 36.22 )
 scale = Vector2( 0.492188, 0.802897 )
 
-[node name="spike14" parent="obstacles" index="15" instance=ExtResource( 6 )]
+[node name="spike14" parent="obstacles" index="15" instance=ExtResource( 5 )]
 
 position = Vector2( 2192, -72.4186 )
 scale = Vector2( 0.492188, 2.33876 )
 
-[node name="spike15" parent="obstacles" index="16" instance=ExtResource( 6 )]
+[node name="spike15" parent="obstacles" index="16" instance=ExtResource( 5 )]
 
 position = Vector2( 2224, -225.352 )
 scale = Vector2( 0.492188, 2.15911 )
 
 [node name="out_of_level" parent="obstacles" index="17" groups=[
 "boundary",
-] instance=ExtResource( 6 )]
+] instance=ExtResource( 5 )]
 
 position = Vector2( 867.506, -541.824 )
 scale = Vector2( 19.7761, 0.744209 )
 
-[node name="laser2" parent="obstacles" index="18" instance=ExtResource( 7 )]
+[node name="laser2" parent="obstacles" index="18" instance=ExtResource( 6 )]
 
 position = Vector2( 1582.6, 61.6333 )
 _sections_unfolded = [ "Collision", "Transform" ]
+laserDefect = false
 
-[node name="laser3" parent="obstacles" index="19" instance=ExtResource( 7 )]
+[node name="laser3" parent="obstacles" index="19" instance=ExtResource( 6 )]
 
 position = Vector2( 363.341, 676.106 )
 rotation = 3.14159
+laserDefect = false
 
-[node name="TileMap2" type="TileMap" parent="." index="4"]
+[node name="TileMap2" type="TileMap" parent="." index="3"]
 
 modulate = Color( 0.773849, 0.808594, 0.802894, 1 )
 scale = Vector2( 0.5, 0.5 )
 mode = 0
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 1
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -262,14 +254,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" parent="." index="5" instance=ExtResource( 9 )]
+[node name="player" parent="." index="4" instance=ExtResource( 8 )]
 
-position = Vector2( 48, 384 )
+position = Vector2( 352, 480 )
 
-[node name="flag" parent="." index="6" instance=ExtResource( 10 )]
+[node name="flag" parent="." index="5" instance=ExtResource( 9 )]
 
 position = Vector2( 2455.25, 536.216 )
 
-[node name="UI" parent="." index="7" instance=ExtResource( 11 )]
+[node name="UI" parent="." index="6" instance=ExtResource( 10 )]
 
 

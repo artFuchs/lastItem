@@ -2,6 +2,8 @@ extends Node
 
 var next_level;
 var stars;
+var starFXPlayer
+
 
 func _ready():
 	stars = 0
@@ -12,6 +14,10 @@ func _ready():
 	for f in get_tree().get_nodes_in_group("flag"):
 		f.connect("level_end", self, "_on_flag_level_end")
 	global.start_music()
+	starFXPlayer = AudioStreamPlayer.new()
+	starFXPlayer.stream = load("res://music/collect.wav")
+	add_child(starFXPlayer)
+	
 
 func restart_scene():
 	get_tree().reload_current_scene()
@@ -34,4 +40,4 @@ func _on_point_collected(collector, s):
 		s.queue_free()
 		stars += 1
 		$UI.update_points(stars)
-		$AudioPlayerStar.play()
+		starFXPlayer.play()

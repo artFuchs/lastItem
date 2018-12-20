@@ -25,7 +25,7 @@ func goto_level(lv):
 		
 func goto_next_level():
 	var lv = level+1
-	if (game["levels"][lv] and game["level_keys"][lv] < game["stars"]):
+	if (game["levels"][lv] and game["level_keys"][lv] <= game["stars"]):
 		level = lv
 		goto_scene(game["levels"][lv])
 	else:
