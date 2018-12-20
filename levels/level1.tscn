@@ -11,7 +11,7 @@
 [ext_resource path="res://objetos/flag/flag.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/UI.tscn" type="PackedScene" id=10]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
