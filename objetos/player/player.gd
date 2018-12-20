@@ -53,6 +53,7 @@ var killer = Killer.SPIKES
 # sounds
 export (AudioStreamSample) var jumpFX;
 export (AudioStreamSample) var platformFX;
+export (AudioStreamSample) var itemCollectFX;
 
 
 signal killed
@@ -105,6 +106,8 @@ func _physics_process(delta):
 			new_animation = "dead"
 		else:
 			new_animation = "dead_elet"
+	elif state == States.LUNETTE:
+		new_animation = "plat"
 	
 	if new_animation!=anim:
 		anim = new_animation
@@ -260,8 +263,9 @@ func process_dead(delta):
 		
 func jump():
 	grav_vel = -jump_force;
-	$AudioPlayer.set_stream(jumpFX);
-	$AudioPlayer.play()
+	if not $AudioPlayer.playing:
+		$AudioPlayer.set_stream(jumpFX)
+		$AudioPlayer.play()
 	
 func use_item():
 	if items.empty():
@@ -319,6 +323,8 @@ func collect(item):
 	if item >= e.Items.JUMP and item <= e.Items.PLATFORM:
 		items.append(item)
 		emit_signal("changed_items", items)
+		$AudioPlayer.set_stream(itemCollectFX)
+		$AudioPlayer.play()
 
 func kill(killerobj = null):
 	if state != DEAD:

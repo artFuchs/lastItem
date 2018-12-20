@@ -85,7 +85,7 @@ animations = [ {
 custom_solver_bias = 0.0
 points = PoolVector2Array( -5, -15, 5, -15, 5, 10, 0, 15, -5, 10 )
 
-[node name="enemy" type="KinematicBody2D" index="0"]
+[node name="enemy" type="KinematicBody2D"]
 
 modulate = Color( 0.859375, 0.271912, 0.354524, 1 )
 position = Vector2( 518.304, 326.491 )
