@@ -9,6 +9,8 @@ func _ready():
 	$player.connect("changed_items",self, "_player_changed_items")
 	for p in get_tree().get_nodes_in_group("points"):
 		p.connect("body_entered", self, "_on_point_collected", [p])
+	for f in get_tree().get_nodes_in_group("flag"):
+		f.connect("level_end", self, "_on_flag_level_end")
 
 func restart_scene():
 	get_tree().reload_current_scene()

@@ -16,16 +16,16 @@ func _on_retry_button_pressed():
 	get_tree().reload_current_scene()
 	
 func _on_next_button_pressed():
-	pass
+	global.goto_next_level()
 
 onready var starsPanel = $VBoxContainer/stars
 func show():
 	var i = 0
 	for s in starsPanel.get_children():
-		i += 1
-		s.set_modulate(Color(1,1,1))
 		if i == stars:
 			break
+		s.set_modulate(Color(1,1,1))
+		i += 1
 	popup_centered()
 
 func updatePoints(points):

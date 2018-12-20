@@ -18,6 +18,22 @@ func goto_level(lv):
 		goto_scene(game["levels"][lv])
 	else:
 		print("/root/global - goto_level(" + str(lv) + ") - level not found")
+		
+func goto_next_level():
+	var lv = level+1
+	if (game["levels"][lv] and game["level_keys"][lv] < game["stars"]):
+		level = lv
+		goto_scene(game["levels"][lv])
+	else:
+		print("/root/global - goto_level(" + str(lv) + ") - level not found")
+		
+func sudo_goto_next_level():
+	var lv = level+1
+	if (game["levels"][lv]):
+		level = lv
+		goto_scene(game["levels"][lv])
+	else:
+		print("/root/global - goto_level(" + str(lv) + ") - level not found")
 
 func goto_scene_path(path):
 	var scene = ResourceLoader.load(path);
@@ -38,7 +54,7 @@ func _deferred_goto_scene(scene):
 
 func set_level_stars(stars):
 	if (level > -1 and game["level_stars"].size() > level):
-		game["level_stars"][level] = stars
+		game["level_stars"][level] = max(stars,game["level_stars"][level])
 		var total_stars = 0
 		for s in game["level_stars"]:
 			total_stars += s

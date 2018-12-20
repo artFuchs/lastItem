@@ -5,6 +5,7 @@
 [ext_resource path="res://levels/level2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/UI_font1.tres" type="DynamicFont" id=4]
 
+
 [node name="main menu" type="CanvasLayer" index="0"]
 
 layer = 1
@@ -13,7 +14,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
-levels = [ [ ExtResource( 2 ), 0 ], [ ExtResource( 3 ), 2 ] ]
+levels = [ [ ExtResource( 2 ), 0 ], [ ExtResource( 3 ), 1 ] ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
 
@@ -86,14 +87,14 @@ _sections_unfolded = [ "Focus" ]
 
 [node name="PanelLevels" type="PanelContainer" parent="." index="1"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -351.0
-margin_top = -186.0
-margin_right = 339.0
-margin_bottom = 178.0
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -377.0
+margin_top = 22.0
+margin_right = -29.0
+margin_bottom = -21.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_next = NodePath("VBoxContainer/Button")
@@ -111,8 +112,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 683.0
-margin_bottom = 357.0
+margin_right = 341.0
+margin_bottom = 550.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -127,8 +128,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 656.0
-margin_right = 676.0
+margin_left = 314.0
+margin_right = 334.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -153,7 +154,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
-margin_right = 676.0
+margin_right = 334.0
 margin_bottom = 65.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
