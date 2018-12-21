@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objetos/laser/laserRayDefective.gd" type="Script" id=1]
+[ext_resource path="res://objetos/laser/laser.svg" type="Texture" id=2]
+[ext_resource path="res://objetos/laser/laser_loop.ogg" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5.65181, 5.60655 )
+
+[node name="laser" type="StaticBody2D" groups=[
+"laser",
+]]
+
+input_pickable = false
+collision_layer = 3
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+timeOn = 1
+timeOff = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="0"]
+
+rotation = -3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 1000 )
+collision_mask = 3
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0, -1.69896 )
+shape = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="." index="2"]
+
+points = PoolVector2Array( 0, 0.249594, 0, -100 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+texture_mode = 51002880
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Line2D2" type="Line2D" parent="." index="3"]
+
+position = Vector2( 0.20789, 0 )
+points = PoolVector2Array( 0, 0.249594, 0.805998, -2.17483, 0, -4.92461 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+texture_mode = 51002880
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Line2D3" type="Line2D" parent="." index="4"]
+
+position = Vector2( 0.20789, 0 )
+points = PoolVector2Array( 0, 0.249594, -1.09131, -2.11108, -0.125882, -4.92461 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+texture_mode = 51002880
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Base" type="Sprite" parent="." index="5"]
+
+position = Vector2( 0, -1.61989 )
+scale = Vector2( 0.0853721, 0.0853721 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 500.0
+attenuation = 1.0
+bus = "FX"
+area_mask = 2
+
+[node name="timerOn" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[node name="timerOff" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="timerOn" to="." method="_on_timerOn_timeout"]
+
+[connection signal="timeout" from="timerOff" to="." method="_on_timerOff_timeout"]
+
+
