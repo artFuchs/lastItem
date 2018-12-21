@@ -35,6 +35,7 @@ __meta__ = {
 
 [node name="TileMap2" type="TileMap" parent="." index="0"]
 
+visible = false
 scale = Vector2( 0.5, 0.5 )
 mode = 0
 tile_set = ExtResource( 2 )
@@ -223,7 +224,6 @@ gravity = Vector2( -1, 0 )
 position = Vector2( 688.771, 120.982 )
 rotation = 4.71239
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-walk_speed = 200.0
 gravity = Vector2( 1, 0 )
 
 [node name="enemy_limiter" parent="obstacles" index="2" instance=ExtResource( 7 )]
