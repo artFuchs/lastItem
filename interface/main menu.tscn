@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://fonts/UI_font1.tres" type="DynamicFont" id=4]
-[ext_resource path="res://fonts/UI_font_buttons.tres" type="DynamicFont" id=5]
+[ext_resource path="res://levels/level3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/UI_font1.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/UI_font_buttons.tres" type="DynamicFont" id=6]
 
-[node name="main menu" type="CanvasLayer"]
+[node name="main menu" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -14,7 +15,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
-levels = [ [ ExtResource( 2 ), 0 ], [ ExtResource( 3 ), 0 ] ]
+levels = [ [ ExtResource( 2 ), 0 ], [ ExtResource( 3 ), 0 ], [ ExtResource( 4 ), 3 ] ]
 
 [node name="Label" type="Label" parent="." index="0"]
 
@@ -32,7 +33,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "UNTIL THE LAST ITEM"
 percent_visible = 1.0
 lines_skipped = 0
@@ -75,7 +76,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -101,7 +102,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -127,7 +128,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -216,7 +217,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "NÍVEIS"
 align = 1
 percent_visible = 1.0
@@ -318,7 +319,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 text = "CRÉDITOS"
 align = 1
 percent_visible = 1.0
