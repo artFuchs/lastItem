@@ -24,7 +24,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1734.73, -249.842, 0, 0, 0, 0, 2140.02, -249.92, 0, 0, 0, 0, 1734.74, -249.843, 0, 0, 0, 0, 1734.8, -249.762 )
 }
 
-[node name="level3" type="Node" index="0"]
+[node name="level3" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
